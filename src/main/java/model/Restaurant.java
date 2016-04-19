@@ -8,21 +8,21 @@ import java.util.*;
 public class Restaurant extends Location {
 
     private Set<Courier> couriers = null;
-    private List<Order> orders = null;
+    private List<Delivery> deliveries = null;
     public static int P;
 
     public Restaurant(int x, int y) {
         super(x, y);
         couriers = new HashSet<Courier>();
-        orders =  new ArrayList<Order>();
+        deliveries =  new ArrayList<Delivery>();
     }
 
     public Set<Courier> getCouriers() {
         return couriers;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public List<Delivery> getDeliveries() {
+        return deliveries;
     }
 
 }
