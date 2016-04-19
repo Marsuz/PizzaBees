@@ -1,8 +1,6 @@
 package model;
 
-/**
- * Created by Marcin on 2016-04-19.
- */
+
 public class Location {
 
     protected int x;
@@ -47,5 +45,7 @@ public class Location {
         result = 31 * result + y;
         return result;
     }
+
+
 }
 

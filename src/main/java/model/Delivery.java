@@ -2,9 +2,6 @@ package model;
 
 import java.util.List;
 
-/**
- * Created by Jakub Kudzia on 4/19/16.
- */
 public class Delivery {
 
     private List<Order> orders;
@@ -15,5 +12,19 @@ public class Delivery {
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public int getDistance(Location restaurant){
+        int distance = 0;
+
+        Location temp = restaurant;
+        for(Order order: orders){
+            distance += order.getDestination().getDistance(temp);
+            temp = order.getDestination();
+        }
+
+        distance += temp.getDistance(restaurant);
+
+        return distance;
     }
 }
