@@ -1,3 +1,5 @@
+package app;
+
 import com.google.gson.Gson;
 import model.Order;
 import model.Restaurant;
