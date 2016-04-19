@@ -1,14 +1,20 @@
+import com.google.gson.Gson;
 import model.Restaurant;
 
 import java.util.List;
 
-/**
- * Created by Marcin on 2016-04-19.
- */
 public class JsonSample {
 
-    public List<Restaurant> restaurants = null;
+    private static List<Restaurant> restaurants = null;
 
+    public static void main(String[] args) {
+        System.out.println(convertToJson());
+    }
+
+    private static String convertToJson(){
+        Gson gson = new Gson();
+        return gson.toJson(restaurants);
+    }
 
 
 
