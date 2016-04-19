@@ -1,1 +1,36 @@
-restaurants + power of restaurants + orders
+{
+   "restaurants":[
+      {
+         "courierNumber":5,
+         "couriers":[
+
+         ],
+         "deliveries":[
+
+         ],
+         "x":10,
+         "y":10
+      },
+      {
+         "courierNumber":10,
+         "couriers":[
+
+         ],
+         "deliveries":[
+
+         ],
+         "x":20,
+         "y":15
+      }
+   ],
+   "P":10,
+   "orders":[
+      {
+         "destination":{
+            "x":20,
+            "y":20
+         },
+         "quantity":5
+      }
+   ]
+}
