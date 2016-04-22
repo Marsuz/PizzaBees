@@ -21,7 +21,7 @@ public class Restaurant extends Location {
         super(x, y);
         this.courierNumber = courierNumber;
         couriers = new HashSet<Courier>();
-        //for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
+        for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
         deliveries =  new ArrayList<Delivery>();
     }
 
@@ -48,11 +48,11 @@ public class Restaurant extends Location {
         for(Delivery d: deliveries){
             currTime += d.getQuantity() * P;
 
-            events.add(new DeliveryEvent(currTime, d));
+            events.add(new DeliveryEvent(currTime, this, d));
         }
 
         for(Courier c: couriers){
-            events.add(new CourierEvent(c));
+            events.add(new CourierEvent(c, this));
         }
 
         while(!events.isEmpty()){

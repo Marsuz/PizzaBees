@@ -2,6 +2,7 @@ package model.event;
 
 import model.Courier;
 import model.Delivery;
+import model.Restaurant;
 
 import java.util.Queue;
 
@@ -9,12 +10,14 @@ import java.util.Queue;
  * Created by wgrabis on 22.04.2016.
  */
 public class DeliveryEvent implements RestaurantEvent {
-    long time;
-    Delivery delivery;
+    private long time;
+    private Delivery delivery;
+    private Restaurant restaurant;
 
-    public DeliveryEvent(long time, Delivery delivery){
+    public DeliveryEvent(long time, Restaurant restaurant, Delivery delivery){
         this.time = time;
         this.delivery = delivery;
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -23,7 +26,9 @@ public class DeliveryEvent implements RestaurantEvent {
         else{
             Courier courier = freeCouriers.remove();
 
-            events.add(new CourierEvent(courier));
+            courier.executeDelivery(delivery.getDistance(restaurant), time);
+
+            events.add(new CourierEvent(courier, restaurant));
         }
     }
 

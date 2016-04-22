@@ -2,6 +2,7 @@ package model.event;
 
 import model.Courier;
 import model.Delivery;
+import model.Restaurant;
 
 import java.util.Queue;
 
@@ -10,9 +11,11 @@ import java.util.Queue;
  */
 public class CourierEvent implements RestaurantEvent {
     private Courier courier;
+    private Restaurant restaurant;
 
-    public CourierEvent(Courier courier){
+    public CourierEvent(Courier courier, Restaurant restaurant){
         this.courier = courier;
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -20,6 +23,8 @@ public class CourierEvent implements RestaurantEvent {
         if(readyDeliveries.isEmpty())freeCouriers.add(courier);
         else{
             Delivery delivery = readyDeliveries.remove();
+
+            courier.executeDelivery(delivery.getDistance(restaurant), courier.getTime());
 
             events.add(this);
         }
