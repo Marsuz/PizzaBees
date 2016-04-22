@@ -1,7 +1,7 @@
 package model;
 
 public class Courier {
-    private double time;
+    private long time;
     private int velocity;
     private int capacity;
 
@@ -15,8 +15,8 @@ public class Courier {
         time += delivery.getDistance(restaurant) / velocity;
     }
 
-    public boolean isFree(int currTime){
-        return time >= currTime;
+    public long getTime(){
+        return time;
     }
 
 

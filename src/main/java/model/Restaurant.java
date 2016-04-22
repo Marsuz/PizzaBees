@@ -28,4 +28,28 @@ public class Restaurant extends Location {
         return deliveries;
     }
 
+    public void setDeliveries(List<Delivery> deliveries){
+        this.deliveries = deliveries;
+    }
+
+    public int getDistance(){
+        int distance = 0;
+
+        for(Delivery d: deliveries) {
+            distance += d.getDistance(this);
+        }
+
+        return distance;
+    }
+
+    public long maxTime(){
+        long max = 0;
+
+        for(Courier c: couriers){
+            max = Long.max(max, c.getTime());
+        }
+
+        return max;
+    }
+
 }
