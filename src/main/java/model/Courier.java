@@ -2,12 +2,9 @@ package model;
 
 public class Courier {
     private long time;
-    private int velocity;
-    private int capacity;
+    public static int velocity;
 
-    public Courier(int velocity, int capacity){
-        this.velocity = velocity;
-        this.capacity = capacity;
+    public Courier(){
         this.time = 0;
     }
 

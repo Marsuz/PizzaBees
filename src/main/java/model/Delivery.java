@@ -14,6 +14,16 @@ public class Delivery {
         return orders;
     }
 
+    public int getQuantity(){
+        int quantity = 0;
+
+        for(Order o: orders){
+            quantity += o.getQuantity();
+        }
+
+        return quantity;
+    }
+
     public long getDistance(Location restaurant){
         long distance = 0;
 
