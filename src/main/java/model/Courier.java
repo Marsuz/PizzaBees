@@ -11,8 +11,8 @@ public class Courier {
         this.time = 0;
     }
 
-    public void executeDelivery(Delivery delivery, Location restaurant){
-        time += delivery.getDistance(restaurant) / velocity;
+    public void executeDelivery(long distance, long startTime){
+        time = startTime + distance / velocity;
     }
 
     public long getTime(){

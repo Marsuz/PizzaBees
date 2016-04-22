@@ -32,6 +32,17 @@ public class Restaurant extends Location {
         this.deliveries = deliveries;
     }
 
+    public void simulate(){
+        long currTime = 0;
+
+        Queue<Courier> freeCouriers = new LinkedList<Courier>();
+        Queue<Delivery> readyDeliveries = new LinkedList<Delivery>();
+
+        Queue<>
+
+
+    }
+
     public int getDistance(){
         int distance = 0;
 

@@ -14,8 +14,8 @@ public class Delivery {
         return orders;
     }
 
-    public int getDistance(Location restaurant){
-        int distance = 0;
+    public long getDistance(Location restaurant){
+        long distance = 0;
 
         Location temp = restaurant;
         for(Order order: orders){

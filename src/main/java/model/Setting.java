@@ -1,6 +1,6 @@
 package model;
 
-import solver.permutation.SettingFactory;
+import solver.setting.SettingFactory;
 
 import java.util.List;
 
@@ -13,9 +13,12 @@ public class Setting {
     public Setting(List<Restaurant> restaurants){
         this.restaurants = restaurants;
 
+        for(Restaurant r: restaurants){
+            r.simulate();
+        }
     }
 
-    public long getFitness(double wage){
+    public double getFitness(double distanceWage, double timeWage){
         long distance = 0;
         long time = 0;
 
@@ -24,10 +27,10 @@ public class Setting {
             time = Long.max(time, r.maxTime());
         }
 
-        return distance + (long)(time * wage);
+        return distance * distanceWage + time * timeWage;
     }
 
     public Setting getNeighbour(SettingFactory factory){
-        return new Setting(factory.getNextSetting(restaurants));
+        return new Setting(factory.getNeighbourSetting(restaurants));
     }
 }
