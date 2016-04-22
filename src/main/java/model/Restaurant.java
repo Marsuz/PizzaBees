@@ -32,6 +32,10 @@ public class Restaurant extends Location {
         this.deliveries = deliveries;
     }
 
+    public void addDelivery(Delivery delivery){
+            this.deliveries.add(delivery);
+    }
+
     public void simulate(){
         long currTime = 0;
 
