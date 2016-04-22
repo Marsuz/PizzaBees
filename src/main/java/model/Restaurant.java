@@ -1,5 +1,10 @@
 package model;
 
+import model.event.CourierEvent;
+import model.event.DeliveryEvent;
+import model.event.EventComparator;
+import model.event.RestaurantEvent;
+
 import java.util.*;
 
 /**
@@ -10,7 +15,7 @@ public class Restaurant extends Location {
     private int courierNumber;
     private Set<Courier> couriers = null;
     private List<Delivery> deliveries = null;
-    public static int P;
+    public static int P; // how many units of time creating single object takes
 
     public Restaurant(int x, int y, int courierNumber) {
         super(x, y);
@@ -35,11 +40,24 @@ public class Restaurant extends Location {
     public void simulate(){
         long currTime = 0;
 
-        Queue<Courier> freeCouriers = new LinkedList<Courier>();
-        Queue<Delivery> readyDeliveries = new LinkedList<Delivery>();
+        Queue<Courier> freeCouriers = new LinkedList<>();
+        Queue<Delivery> readyDeliveries = new LinkedList<>();
 
-        Queue<>
+        Queue<RestaurantEvent> events = new PriorityQueue<>(new EventComparator());
 
+        for(Delivery d: deliveries){
+            currTime += d.getQuantity() * P;
+
+            events.add(new DeliveryEvent(currTime, d));
+        }
+
+        for(Courier c: couriers){
+            events.add(new CourierEvent(c));
+        }
+
+        while(!events.isEmpty()){
+            events.remove().sortMyself(freeCouriers, readyDeliveries, events);
+        }
 
     }
 
