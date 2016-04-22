@@ -8,8 +8,8 @@ import java.util.Comparator;
 public class EventComparator implements Comparator<RestaurantEvent> {
     @Override
     public int compare(RestaurantEvent o1, RestaurantEvent o2) {
-        if(o1.getTime() > o2.getTime()) return -1;
+        if(o1.getTime() > o2.getTime()) return 1;
         if(o1.getTime() == o2.getTime()) return 0;
-        return 1;
+        return -1;
     }
 }

@@ -60,7 +60,9 @@ public class Restaurant extends Location {
         }
 
         while(!events.isEmpty()){
-            events.remove().sortMyself(freeCouriers, readyDeliveries, events);
+            RestaurantEvent tmp = events.remove();
+            System.out.println(tmp.getClass() + " time:" + tmp.getTime());
+            tmp.sortMyself(freeCouriers, readyDeliveries, events);
         }
 
     }
