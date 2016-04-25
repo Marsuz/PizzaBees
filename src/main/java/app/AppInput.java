@@ -1,39 +1,53 @@
 package app;
 
 import com.google.gson.Gson;
-import model.Order;
-import model.Restaurant;
+import com.google.gson.GsonBuilder;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class AppInput {
     private static final Logger logger = Logger.getLogger(AppInput.class);
-    private List<Restaurant> restaurants = null;
-    private int P;
-    private List<Order> orders = null;
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private SavedState savedState;
 
-    public AppInput() {
-        restaurants = new ArrayList<Restaurant>();
-        restaurants.add(new Restaurant(10, 10, 5));
-        restaurants.add(new Restaurant(20, 15, 10));
-        P = 10;
-        orders = new ArrayList<Order>();
-        orders.add(new Order(20, 20, 5));
+    private AppInput(String pathToInputFile) {
+        File inputFile = new File(pathToInputFile);
+        if (!inputFile.exists()) {
+            logger.error(String.format("File with path: %s not exist", pathToInputFile));
+            System.exit(1);
+        }
+        if (!inputFile.isFile()) {
+            logger.error(String.format("File with path: %s is not a file", pathToInputFile));
+            System.exit(1);
+        }
+        try {
+            String jsonContentOfFile = FileUtils.readFileToString(inputFile, Charset.forName("UTF-8"));
+            savedState = gson.fromJson(jsonContentOfFile, SavedState.class);
+            logger.debug(String.format("Resolved app state:\n %s", gson.toJson(savedState)));
+        } catch (IOException e) {
+            logger.error(String.format("Error while reading from file: %s", inputFile.getAbsolutePath()), e);
+        }
     }
 
     public static void main(String[] args) {
         logger.info("Starting app");
-        AppInput input = new AppInput();
-        System.out.println(convertToJson(input));
+        if (args.length < 1) {
+            logger.error("You must provide path to input file");
+            System.exit(1);
+        }
+        final String pathToInputFile = args[0];
+        logger.info(String.format("Will read input from file: %s", pathToInputFile));
+        AppInput input = new AppInput(pathToInputFile);
     }
 
-    private static String convertToJson(AppInput input){
+    private static String convertToJson(AppInput input) {
         Gson gson = new Gson();
         return gson.toJson(input);
     }
-
 
 
 }
