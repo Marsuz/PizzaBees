@@ -3,12 +3,13 @@ package app;
 import com.google.gson.Gson;
 import model.Order;
 import model.Restaurant;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AppInput {
-
+    private static final Logger logger = Logger.getLogger(AppInput.class);
     private List<Restaurant> restaurants = null;
     private int P;
     private List<Order> orders = null;
@@ -23,6 +24,7 @@ public class AppInput {
     }
 
     public static void main(String[] args) {
+        logger.info("Starting app");
         AppInput input = new AppInput();
         System.out.println(convertToJson(input));
     }
