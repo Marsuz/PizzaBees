@@ -5,9 +5,6 @@ import model.Restaurant;
 
 import java.util.List;
 
-/**
- * Created by Admin on 2016-04-22.
- */
 public abstract class SettingFactory {
 
     List<Restaurant> restaurants;

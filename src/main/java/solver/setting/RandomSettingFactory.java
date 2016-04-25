@@ -7,9 +7,6 @@ import model.Restaurant;
 import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
-/**
- * Created by Admin on 2016-04-22.
- */
 public class RandomSettingFactory extends SettingFactory {
 
     public RandomSettingFactory(List<Restaurant> restaurants) {
