@@ -80,7 +80,7 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      * @return      AppWorker object
      */
     private AppWorker initializeAppWorker() {
-        AppWorker worker = new AppWorker(progressLabel, iterations, inputTextArea.getText());
+        AppWorker worker = new AppWorker(this, iterations, inputTextArea.getText());
         worker.addPropertyChangeListener(new AppWorkerPropertyChangeListener(this, worker));
         return worker;
     }
