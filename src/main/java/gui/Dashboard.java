@@ -14,6 +14,7 @@ public class Dashboard extends JFrame {
     private JProgressBar progressBar;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
+    private JPanel argumentsPanel;
 
     public Dashboard() {
         super("PizzaBees");
