@@ -6,11 +6,13 @@ import org.apache.log4j.Logger;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by sjchmiela on 26.04.2016.
@@ -30,6 +32,8 @@ public class Dashboard extends JFrame {
 
     private JFileChooser fileChooser;
 
+    private AppWorker appWorker = null;
+
     public Dashboard() {
         super("PizzaBees");
         fileChooser = initializeFileChooser();
@@ -43,27 +47,61 @@ public class Dashboard extends JFrame {
         setVisible(true);
     }
 
-    private void runButtonClicked() {
-        new Thread() {
-            public void run() {
-                try {
-                    argumentsSetEnabled(false);
-                    progressBar.setMinimum(0);
-                    progressBar.setMaximum(3000);
-                    for (int i = 1; i <= 3000; i++) {
-                        progressLabel.setText("" + i + "/" + 3000 + " iterations done");
-                        progressBar.setValue(i);
-                        Thread.sleep(1);
-                    }
-                    showCompletionDialog("xxx");
-                    argumentsSetEnabled(true);
-                    progressBar.setValue(0);
-                    progressLabel.setText("");
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+    private class AppWorkerPropertyChangeListener implements PropertyChangeListener {
+        @Override
+        public void propertyChange(PropertyChangeEvent evt) {
+            if (evt.getPropertyName().equals("progress")) {
+                progressBar.setValue((int) evt.getNewValue());
+            } else if (evt.getPropertyName().equals("state")) {
+                switch ((SwingWorker.StateValue) evt.getNewValue()) {
+                    case DONE:
+                        try {
+                            showCompletionDialog(appWorker.get());
+                        } catch (InterruptedException | CancellationException e) {
+                            e.printStackTrace();
+                            JOptionPane.showMessageDialog(rootPanel,
+                                    "The solving process has been cancelled.",
+                                    "Execution interrupted",
+                                    JOptionPane.ERROR_MESSAGE);
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                            JOptionPane.showMessageDialog(rootPanel,
+                                    "The solving process has failed.",
+                                    "Error occurred",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                        progressBar.setValue(0);
+                        runButton.setText("Run");
+                        appWorker = null;
                 }
             }
-        }.start();
+        }
+    }
+
+    private AppWorker initializeAppWorker() {
+        AppWorker worker = new AppWorker(progressLabel, 3000, "");
+        progressBar.setMinimum(0);
+        progressBar.setMaximum(3000);
+        worker.addPropertyChangeListener(new AppWorkerPropertyChangeListener());
+        return worker;
+    }
+
+    private void runButtonClicked() {
+        if (appWorker == null) {
+            appWorker = initializeAppWorker();
+            appWorker.execute();
+        } else {
+            appWorker.cancel(true);
+            appWorker = null;
+        }
+
+        if (appWorker == null) {
+            argumentsSetEnabled(true);
+            runButton.setText("Run");
+        } else {
+            argumentsSetEnabled(false);
+            runButton.setText("Cancel");
+        }
     }
 
     private void argumentsSetEnabled(boolean value) {
