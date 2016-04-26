@@ -27,6 +27,7 @@ public class Dashboard extends JFrame {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JPanel argumentsPanel;
+    private JLabel progressLabel;
 
     private JFileChooser fileChooser;
 
@@ -34,12 +35,51 @@ public class Dashboard extends JFrame {
         super("PizzaBees");
         fileChooser = initializeFileChooser();
         chooseFileButton.addActionListener(e -> openFileChooserDialog());
+        runButton.addActionListener(e -> runButtonClicked());
         setContentPane(rootPanel);
         setMinimumSize(new Dimension(800, 494));
         setMaximumSize(new Dimension(800, 494));
         setSize(800, 494);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    private void runButtonClicked() {
+        new Thread() {
+            public void run() {
+                try {
+                    argumentsSetEnabled(false);
+                    progressBar.setMinimum(0);
+                    progressBar.setMaximum(3000);
+                    for (int i = 1; i <= 3000; i++) {
+                        progressLabel.setText("" + i + "/" + 3000 + " iterations done");
+                        progressBar.setValue(i);
+                        Thread.sleep(1);
+                    }
+                    showCompletionDialog("xxx");
+                    argumentsSetEnabled(true);
+                    progressBar.setValue(0);
+                    progressLabel.setText("");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
+    private void argumentsSetEnabled(boolean value) {
+        comboBox1.setEnabled(value);
+        comboBox2.setEnabled(value);
+        inputTextArea.setEnabled(value);
+        fileTextField.setEnabled(value);
+        chooseFileButton.setEnabled(value);
+    }
+
+    private void showCompletionDialog(String message) {
+        JOptionPane.showMessageDialog(rootPanel,
+                "Finished running solver. Calculated solution:\n" + message,
+                "Solving finished!",
+                JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void openFileChooserDialog() {
