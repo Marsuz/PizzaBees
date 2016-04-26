@@ -26,7 +26,6 @@ public class Dashboard extends JFrame {
     private JProgressBar progressBar;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
-    private JPanel argumentsPanel;
     private JLabel progressLabel;
 
     private JFileChooser fileChooser;
