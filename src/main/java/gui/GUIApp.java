@@ -19,6 +19,11 @@ public class GUIApp {
             e.printStackTrace();
         }
 
-        Dashboard window = new Dashboard();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dashboard window = new Dashboard();
+            }
+        });
     }
 }
