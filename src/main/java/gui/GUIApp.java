@@ -23,6 +23,7 @@ public class GUIApp {
             @Override
             public void run() {
                 Dashboard window = new Dashboard();
+                window.setVisible(true);
             }
         });
     }
