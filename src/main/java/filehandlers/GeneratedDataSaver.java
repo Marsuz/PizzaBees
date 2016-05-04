@@ -17,7 +17,7 @@ public class GeneratedDataSaver {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final String DEFAULT_FILEPATH = "src\\test\\resources\\generated\\input.txt";
 
-    public static void saveData(String filePath, int[] params) {
+    public void generateAndSaveData(String filePath, int[] params) {
 
         if (params.length != 7) {
             LOGGER.info("Please insert: <restaurants number> <orders number>" +
@@ -31,12 +31,16 @@ public class GeneratedDataSaver {
         String dataInJson = gson.toJson(generatedData);
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(realFilepath))) {
-
+            bw.write(dataInJson);
         } catch (IOException ex) {
-
+            LOGGER.error("Problem occurred processing generated data file", ex);
+            System.exit(1);
         }
     }
 
-
+    public static void main(String[] args) {
+        GeneratedDataSaver saver = new GeneratedDataSaver();
+        saver.generateAndSaveData(null, new int[]{10, 20, 5, 5, 7, 1, 1});
+    }
 
 }

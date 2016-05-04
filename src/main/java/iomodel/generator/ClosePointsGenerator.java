@@ -36,7 +36,7 @@ public class ClosePointsGenerator {
         List<Restaurant> restaurants = new ArrayList<>();
         int size = restaurantsNumber/howCloseRestaurants;
         for (int i = 0; i < restaurantsNumber; i++) {
-            Restaurant restaurant = new Restaurant(random.nextInt(size), random.nextInt(size), random.nextInt(maxCourierNumber));
+            Restaurant restaurant = new Restaurant(random.nextInt(size + 1), random.nextInt(size + 1), random.nextInt(maxCourierNumber) + 1);
             restaurant.setCouriers(new HashSet<>());
             restaurants.add(restaurant);
         }
@@ -47,7 +47,7 @@ public class ClosePointsGenerator {
         List<Order> orders = new ArrayList<>();
         int size = ordersNumber/howCloseOrders;
         for (int i = 0; i < ordersNumber; i++) {
-            orders.add(new Order(random.nextInt(size), random.nextInt(size), random.nextInt(maxOrderQuantity)));
+            orders.add(new Order(random.nextInt(size + 1), random.nextInt(size + 1), random.nextInt(maxOrderQuantity) + 1));
         }
         return orders;
     }
