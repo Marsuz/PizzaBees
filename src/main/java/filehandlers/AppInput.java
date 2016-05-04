@@ -1,5 +1,6 @@
-package app;
+package filehandlers;
 
+import iomodel.SavedState;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
@@ -44,10 +45,12 @@ public class AppInput {
         AppInput input = new AppInput(pathToInputFile);
     }
 
+/*
     private static String convertToJson(AppInput input) {
         Gson gson = new Gson();
         return gson.toJson(input);
     }
+*/
 
 
 }

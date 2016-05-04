@@ -2,7 +2,6 @@ package model;
 
 import model.event.CourierEvent;
 import model.event.DeliveryEvent;
-import model.event.EventComparator;
 import model.event.RestaurantEvent;
 
 import java.util.*;
@@ -21,12 +20,20 @@ public class Restaurant extends Location {
         super(x, y);
         this.courierNumber = courierNumber;
         couriers = new HashSet<Courier>();
-        for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
+        initCouriers(courierNumber);
         deliveries =  new ArrayList<Delivery>();
+    }
+
+    public void initCouriers(int courierNumber) {
+        for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
     }
 
     public Set<Courier> getCouriers() {
         return couriers;
+    }
+
+    public void setCouriers(Set<Courier> couriers) {
+        this.couriers = couriers;
     }
 
     public List<Delivery> getDeliveries() {
@@ -47,8 +54,7 @@ public class Restaurant extends Location {
         Queue<Courier> freeCouriers = new LinkedList<>();
         Queue<Delivery> readyDeliveries = new LinkedList<>();
 
-        Queue<RestaurantEvent> events = new PriorityQueue<>(new EventComparator());
-
+        Queue<RestaurantEvent> events = new PriorityQueue<>(RestaurantEvent.BY_TIME);
         for(Delivery d: deliveries){
             currTime += d.getQuantity() * P;
 
