@@ -34,7 +34,6 @@ public class Delivery {
         }
 
         distance += temp.getDistance(restaurant);
-
         return distance;
     }
 }

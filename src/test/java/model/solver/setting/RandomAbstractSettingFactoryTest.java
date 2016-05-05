@@ -5,7 +5,7 @@ import model.Order;
 import model.Restaurant;
 import org.junit.Before;
 import org.junit.Test;
-import solver.setting.RandomSettingFactory;
+import solver.setting.random.RandomSettingFactory;
 
 import java.util.ArrayList;
 import java.util.List;

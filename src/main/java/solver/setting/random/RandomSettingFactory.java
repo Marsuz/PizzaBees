@@ -1,9 +1,10 @@
-package solver.setting;
+package solver.setting.random;
 
 import model.Delivery;
 import model.Order;
 import model.Restaurant;
 import model.Setting;
+import solver.setting.AbstractSettingFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,18 +22,22 @@ public class RandomSettingFactory extends AbstractSettingFactory {
 
         Iterator<Restaurant> restaurantIterator = restaurants.iterator();
         List<Delivery> deliveries = generateDeliveries(orders);
+        List<Restaurant> newRestaurants = new ArrayList<>();
 
         for (Delivery delivery : deliveries) {
-            restaurantIterator.next().addDelivery(delivery);
+            Restaurant newRestaurant = new Restaurant(restaurantIterator.next());
+            newRestaurant.addDelivery(delivery);
+            newRestaurants.add(newRestaurant);
             if (!restaurantIterator.hasNext())
                 restaurantIterator = restaurants.iterator();
         }
-        return new SettingImpl(restaurants);
+        return new RandomSetting(newRestaurants);
     }
 
     private List<Delivery> generateDeliveries(List<Order> orders){
 
         int ordersNumber = orders.size();
+        //todo ordersNumber - 1 moze byc 0, trzeba lapac wyjatek albo wyifowac
         int deliveriesNumber = new Random().nextInt(ordersNumber - 1) + 1;
         int orderPerDelivery = ordersNumber/deliveriesNumber;
         List<Delivery> deliveries = new ArrayList<>(deliveriesNumber + 1);
