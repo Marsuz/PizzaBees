@@ -3,18 +3,21 @@ package solver.setting;
 import model.Delivery;
 import model.Order;
 import model.Restaurant;
+import model.Setting;
 
-import javax.swing.text.html.HTMLDocument;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-public class RandomSettingFactory extends SettingFactory {
+public class RandomSettingFactory extends AbstractSettingFactory {
 
     public RandomSettingFactory(List<Restaurant> restaurants) {
         super(restaurants);
     }
 
     @Override
-    public List<Restaurant> getInitialSetting(List<Order> orders) {
+    public Setting getInitialSetting(List<Order> orders) {
 
         Iterator<Restaurant> restaurantIterator = restaurants.iterator();
         List<Delivery> deliveries = generateDeliveries(orders);
@@ -24,16 +27,8 @@ public class RandomSettingFactory extends SettingFactory {
             if (!restaurantIterator.hasNext())
                 restaurantIterator = restaurants.iterator();
         }
-
-        return restaurants;
-
+        return new SettingImpl(restaurants);
     }
-
-    @Override
-    public List<Restaurant> getNeighbourSetting(List<Restaurant> restaurants) {
-        return null;
-    }
-
 
     private List<Delivery> generateDeliveries(List<Order> orders){
 
@@ -55,9 +50,7 @@ public class RandomSettingFactory extends SettingFactory {
             ordersForLastDelivery.add(orderIterator.next());
 
         deliveries.add(new Delivery(ordersForLastDelivery));
-
         return deliveries;
-
     }
 
 }

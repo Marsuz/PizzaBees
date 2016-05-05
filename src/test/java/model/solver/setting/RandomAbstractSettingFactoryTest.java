@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Jakub Kudzia on 4/23/16.
  */
-public class RandomSettingFactoryTest {
+public class RandomAbstractSettingFactoryTest {
 
     private RandomSettingFactory randomSettingFactory;
     private List<Restaurant> restaurants;

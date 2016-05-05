@@ -1,13 +1,11 @@
 package model;
 
-import solver.setting.SettingFactory;
-
 import java.util.List;
 
 /**
  * Created by Admin on 2016-04-22.
  */
-public class Setting {
+public abstract class Setting {
     private List<Restaurant> restaurants;
 
     public Setting(List<Restaurant> restaurants){
@@ -30,7 +28,5 @@ public class Setting {
         return distance * distanceWage + time * timeWage;
     }
 
-    public Setting getNeighbour(SettingFactory factory){
-        return new Setting(factory.getNeighbourSetting(restaurants));
-    }
+    public abstract Setting getNeighbour(int moves);
 }
