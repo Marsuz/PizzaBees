@@ -24,6 +24,12 @@ public class Restaurant extends Location {
         deliveries =  new ArrayList<>();
     }
 
+    public Restaurant(int x, int y) {
+        super(x, y);
+        couriers = new HashSet<>();
+        deliveries =  new ArrayList<>();
+    }
+
     public Restaurant(Restaurant restaurant) {
         super(restaurant.x, restaurant.y);
         this.courierNumber = restaurant.courierNumber;
@@ -32,16 +38,19 @@ public class Restaurant extends Location {
         deliveries =  new ArrayList<>();
     }
 
+    public void setCourierNumber(int courierNumber) {
+        this.courierNumber = courierNumber;
+    }
+
     public void initCouriers(int courierNumber) {
+        this.courierNumber = courierNumber;
         for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
     }
 
+
+
     public Set<Courier> getCouriers() {
         return couriers;
-    }
-
-    public void setCouriers(Set<Courier> couriers) {
-        this.couriers = couriers;
     }
 
     public List<Delivery> getDeliveries() {

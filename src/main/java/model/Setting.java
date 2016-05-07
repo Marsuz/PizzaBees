@@ -29,4 +29,8 @@ public abstract class Setting {
     }
 
     public abstract Setting getNeighbour(int moves);
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
 }
