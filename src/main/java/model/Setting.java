@@ -7,6 +7,8 @@ import java.util.List;
  */
 public abstract class Setting {
     private List<Restaurant> restaurants;
+    private long fullDistance;
+    private long maxTime;
 
     public Setting(List<Restaurant> restaurants){
         this.restaurants = restaurants;
@@ -14,9 +16,7 @@ public abstract class Setting {
         for(Restaurant r: restaurants){
             r.simulate();
         }
-    }
 
-    public double getFitness(double distanceWage, double timeWage){
         long distance = 0;
         long time = 0;
 
@@ -25,8 +25,17 @@ public abstract class Setting {
             time = Long.max(time, r.maxTime());
         }
 
-        return distance * distanceWage + time * timeWage;
+        fullDistance = distance;
+        maxTime = time;
+    }
+
+    public double getFitness(double distanceWage, double timeWage){
+        return fullDistance * distanceWage + maxTime * timeWage;
     }
 
     public abstract Setting getNeighbour(int moves);
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
 }
