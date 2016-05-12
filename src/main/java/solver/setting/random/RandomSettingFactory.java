@@ -13,15 +13,15 @@ import java.util.Random;
 
 public class RandomSettingFactory extends AbstractSettingFactory {
 
-    public RandomSettingFactory(List<Restaurant> restaurants) {
-        super(restaurants);
+    public RandomSettingFactory(List<Restaurant> restaurants, List<Order> orders) {
+        super(restaurants, orders);
     }
 
     @Override
-    public Setting getInitialSetting(List<Order> orders) {
+    public Setting getInitialSetting() {
 
         Iterator<Restaurant> restaurantIterator = restaurants.iterator();
-        List<Delivery> deliveries = generateDeliveries(orders);
+        List<Delivery> deliveries = generateDeliveries();
         List<Restaurant> newRestaurants = new ArrayList<>();
 
         for (Delivery delivery : deliveries) {
@@ -34,11 +34,12 @@ public class RandomSettingFactory extends AbstractSettingFactory {
         return new RandomSetting(newRestaurants);
     }
 
-    private List<Delivery> generateDeliveries(List<Order> orders){
+    private List<Delivery> generateDeliveries(){
 
         int ordersNumber = orders.size();
         //todo ordersNumber - 1 moze byc 0, trzeba lapac wyjatek albo wyifowac
-        int deliveriesNumber = new Random().nextInt(ordersNumber - 1) + 1;
+//        int deliveriesNumber = new Random().nextInt(ordersNumber - 1) + 1;
+        int deliveriesNumber = new Random().nextInt(ordersNumber) + 1;
         int orderPerDelivery = ordersNumber/deliveriesNumber;
         List<Delivery> deliveries = new ArrayList<>(deliveriesNumber + 1);
         Iterator<Order> orderIterator =  orders.iterator();

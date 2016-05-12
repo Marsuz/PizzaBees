@@ -41,7 +41,7 @@ public class RandomAbstractSettingFactoryTest {
 
     @Test
     public void testGetInitialSetting(){
-        List<Restaurant> restaurantsWithSettings = randomSettingFactory.getInitialSetting(orders).getRestaurants();
+        List<Restaurant> restaurantsWithSettings = randomSettingFactory.getInitialSetting().getRestaurants();
         int setOrdersNumber = 0;
 
         for(Restaurant r: restaurantsWithSettings)
