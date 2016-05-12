@@ -47,8 +47,6 @@ public class Restaurant extends Location {
         for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
     }
 
-
-
     public Set<Courier> getCouriers() {
         return couriers;
     }
@@ -78,14 +76,10 @@ public class Restaurant extends Location {
             events.add(new DeliveryEvent(currTime, this, d));
         }
 
-        for(Courier c: couriers){
-            events.add(new CourierEvent(c, this));
-        }
+        couriers.stream().forEach(c -> events.add(new CourierEvent(c, this)));
 
         while(!events.isEmpty()){
-            RestaurantEvent tmp = events.remove();
-            System.out.println(tmp.getClass() + " time:" + tmp.getTime());
-            tmp.sortMyself(freeCouriers, readyDeliveries, events);
+            events.remove().sortMyself(freeCouriers, readyDeliveries, events);
         }
 
     }
