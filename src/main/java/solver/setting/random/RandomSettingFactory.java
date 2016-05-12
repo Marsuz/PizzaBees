@@ -20,16 +20,15 @@ public class RandomSettingFactory extends AbstractSettingFactory {
     @Override
     public Setting getInitialSetting() {
 
-        Iterator<Restaurant> restaurantIterator = restaurants.iterator();
         List<Delivery> deliveries = generateDeliveries();
-        List<Restaurant> newRestaurants = new ArrayList<>();
+        List<Restaurant> newRestaurants = new ArrayList<>(restaurants);
+        Iterator<Restaurant> newRestaurantIterator = newRestaurants.iterator();
 
         for (Delivery delivery : deliveries) {
-            Restaurant newRestaurant = new Restaurant(restaurantIterator.next());
-            newRestaurant.addDelivery(delivery);
-            newRestaurants.add(newRestaurant);
-            if (!restaurantIterator.hasNext())
-                restaurantIterator = restaurants.iterator();
+            if (!newRestaurantIterator.hasNext())
+                //TODO uwaga na pusta liste restauracji
+                newRestaurantIterator = newRestaurants.iterator();
+            newRestaurantIterator.next().addDelivery(delivery);
         }
         return new RandomSetting(newRestaurants);
     }

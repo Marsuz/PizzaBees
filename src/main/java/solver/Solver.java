@@ -1,7 +1,5 @@
 package solver;
 
-import model.Order;
-import model.Restaurant;
 import model.Setting;
 import solver.setting.SettingFactory;
 
@@ -14,15 +12,15 @@ import java.util.stream.IntStream;
  * Created by Marcin on 2016-04-19.
  */
 public class Solver {
-    List<Restaurant> beginRestaurants;
-    List<Order> beginOrders;
+//    List<Restaurant> beginRestaurants;
+//    List<Order> beginOrders;
 
-    public Solver(List<Restaurant> restaurants, List<Order> orders){
-        beginOrders = orders;
-        beginRestaurants = restaurants;
-    }
+//    public Solver(List<Restaurant> restaurants, List<Order> orders){
+//        beginOrders = orders;
+//        beginRestaurants = restaurants;
+//    }
 
-    public void solve(
+    public Setting solve(
             SettingFactory factory,
             double distanceWage,
             double timeWage,
@@ -91,5 +89,12 @@ public class Solver {
             iterationSettings.addAll(newSetting);
         }
 
+        Collections.sort(iterationSettings,
+                (s1, s2) -> Double.compare(
+                        s2.getFitness(distanceWage, timeWage),
+                        s1.getFitness(distanceWage, timeWage)
+                )
+        );
+        return iterationSettings.get(0);
     }
 }

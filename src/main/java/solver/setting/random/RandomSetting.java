@@ -5,6 +5,7 @@ import model.Restaurant;
 import model.Setting;
 import solver.setting.FailedShuffleException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -28,7 +29,7 @@ public class RandomSetting extends Setting {
         for(int i = 0; i < shuffles; i++)
             doShuffle();
 
-        return new RandomSetting(restaurants);
+        return new RandomSetting(new ArrayList<>(restaurants));
     }
 
     void doShuffle(){

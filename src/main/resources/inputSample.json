@@ -2,23 +2,11 @@
    "restaurants":[
       {
          "courierNumber":5,
-         "couriers":[
-
-         ],
-         "deliveries":[
-
-         ],
          "x":10,
          "y":10
       },
       {
          "courierNumber":10,
-         "couriers":[
-
-         ],
-         "deliveries":[
-
-         ],
          "x":20,
          "y":15
       }

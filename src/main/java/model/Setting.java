@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,5 +38,14 @@ public abstract class Setting {
 
     public List<Restaurant> getRestaurants() {
         return restaurants;
+    }
+
+    @Override
+    public String toString() {
+        return "Setting{" +
+                "restaurants=" + Arrays.toString(restaurants.toArray()) +
+                ", fullDistance=" + fullDistance +
+                ", maxTime=" + maxTime +
+                '}';
     }
 }

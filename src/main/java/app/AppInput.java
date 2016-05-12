@@ -14,7 +14,7 @@ public class AppInput {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private SavedState savedState;
 
-    private AppInput(String pathToInputFile) {
+    AppInput(String pathToInputFile) {
         File inputFile = new File(pathToInputFile);
         if (!inputFile.exists()) {
             logger.error(String.format("File with path: %s not exist", pathToInputFile));

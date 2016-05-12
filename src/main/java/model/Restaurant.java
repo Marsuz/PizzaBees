@@ -40,6 +40,7 @@ public class Restaurant extends Location {
 
     public void setCourierNumber(int courierNumber) {
         this.courierNumber = courierNumber;
+        initCouriers(this.courierNumber);
     }
 
     public void initCouriers(int courierNumber) {
@@ -104,4 +105,12 @@ public class Restaurant extends Location {
         return max;
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "courierNumber=" + courierNumber +
+                ", couriers=" + Arrays.toString(couriers.toArray()) +
+                ", deliveries=" + Arrays.toString(deliveries.toArray()) +
+                '}';
+    }
 }
