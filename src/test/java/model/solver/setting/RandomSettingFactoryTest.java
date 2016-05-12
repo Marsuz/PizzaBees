@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by Jakub Kudzia on 4/23/16.
  */
-public class RandomAbstractSettingFactoryTest {
+public class RandomSettingFactoryTest {
 
     private RandomSettingFactory randomSettingFactory;
     private List<Restaurant> restaurants;
@@ -36,7 +36,7 @@ public class RandomAbstractSettingFactoryTest {
             orders.add(new Order(i, i, i));
         }
 
-        randomSettingFactory = new RandomSettingFactory(restaurants);
+        randomSettingFactory = new RandomSettingFactory(restaurants, orders);
     }
 
     @Test

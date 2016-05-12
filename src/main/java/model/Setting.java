@@ -6,9 +6,9 @@ import java.util.List;
  * Created by Admin on 2016-04-22.
  */
 public abstract class Setting {
-    private List<Restaurant> restaurants;
-    private long fullDistance;
-    private long maxTime;
+    protected List<Restaurant> restaurants;
+    protected long fullDistance;
+    protected long maxTime;
 
     public Setting(List<Restaurant> restaurants){
         this.restaurants = restaurants;
