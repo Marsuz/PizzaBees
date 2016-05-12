@@ -1,6 +1,5 @@
 package app;
 
-import generator.SavedState;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
@@ -34,15 +33,8 @@ public class AppInput {
         }
     }
 
-    public static void main(String[] args) {
-        logger.info("Starting app");
-        if (args.length < 1) {
-            logger.error("You must provide path to input file");
-            System.exit(1);
-        }
-        final String pathToInputFile = args[0];
-        logger.info(String.format("Will read input from file: %s", pathToInputFile));
-        AppInput input = new AppInput(pathToInputFile);
+    public SavedState getSavedState(){
+        return savedState;
     }
 
 /*

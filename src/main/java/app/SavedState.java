@@ -1,4 +1,4 @@
-package generator;
+package app;
 
 import model.Order;
 import model.Restaurant;
@@ -14,5 +14,17 @@ public class SavedState {
         this.restaurants = restaurants;
         P = p;
         this.orders = orders;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public int getP() {
+        return P;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }
