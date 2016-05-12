@@ -54,10 +54,13 @@ public class Shuffler {
         List<Delivery> deliveries1 = r1.getDeliveries();
         List<Delivery> deliveries2 = r2.getDeliveries();
 
-        //TODO deliveries moze byc puste
+        int size1 = deliveries1.size();
+        int size2 = deliveries2.size();
+        if(size1 == 0 || size2 == 0)
+            throw new FailedShuffleException();
 
-        int i = random.nextInt(deliveries1.size());
-        int j = random.nextInt(deliveries2.size());
+        int i = random.nextInt(size1);
+        int j = random.nextInt(size2);
         Delivery d1 = deliveries1.get(i);
         Delivery d2 = deliveries2.get(j);
         swap(d1, d2);
@@ -98,10 +101,14 @@ public class Shuffler {
 
         List<Delivery> deliveries1 = r1.getDeliveries();
         List<Delivery> deliveries2 = r2.getDeliveries();
+        int size1 = deliveries1.size();
+        int size2 = deliveries2.size();
 
-        //TODO deliveries moze byc puste
-        int i = random.nextInt(deliveries1.size());
-        int j = random.nextInt(deliveries2.size());
+        if(size1 == 0 || size2 == 0)
+            throw new FailedShuffleException();
+
+        int i = random.nextInt(size1);
+        int j = random.nextInt(size2);
         Delivery d1 = deliveries1.get(i);
         Delivery d2 = deliveries2.get(j);
         move(d1, d2);
