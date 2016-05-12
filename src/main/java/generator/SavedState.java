@@ -1,4 +1,4 @@
-package iomodel;
+package generator;
 
 import model.Order;
 import model.Restaurant;

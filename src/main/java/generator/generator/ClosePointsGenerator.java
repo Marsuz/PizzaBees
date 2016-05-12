@@ -1,6 +1,5 @@
-package iomodel.generator.impl;
+package generator.generator;
 
-import iomodel.generator.Generator;
 import model.Order;
 import model.Restaurant;
 import org.apache.log4j.Logger;

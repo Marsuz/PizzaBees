@@ -1,10 +1,9 @@
-package filehandlers;
+package generator;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import iomodel.SavedState;
-import iomodel.generator.Generator;
-import iomodel.generator.impl.ClosePointsGenerator;
+import generator.generator.Generator;
+import generator.generator.ClosePointsGenerator;
 import org.apache.log4j.Logger;
 
 import java.io.*;
