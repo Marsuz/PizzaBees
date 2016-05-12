@@ -3,7 +3,6 @@ package solver;
 import model.Order;
 import model.Restaurant;
 import model.Setting;
-import solver.setting.AbstractSettingFactory;
 import solver.setting.SettingFactory;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class Solver {
     ){
         List<Setting> scoutsSettings = new ArrayList<>();
         IntStream.range(0, scoutsQuantity).forEach(
-                n -> scoutsSettings.add(n, factory.getInitialSetting(beginOrders))
+                n -> scoutsSettings.add(n, factory.getInitialSetting())
         );
 
         while(iterations-- != 0) { // TODO: second stop condition

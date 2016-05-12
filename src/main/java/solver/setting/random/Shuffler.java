@@ -27,13 +27,13 @@ public class Shuffler {
             throw new FailedShuffleException();
 
         int i = random.nextInt(ordersNum);
-        int j = generateRandomExclusive(ordersNum, i);
+        int j = RandomGenerator.generateRandomExclusive(ordersNum, i);
         Collections.swap(orders, i, j);
     }
 
     public void swap(Delivery d1, Delivery d2) throws FailedShuffleException {
         List<Order> orders1 = d1.getOrders();
-        List<Order> orders2 = d1.getOrders();
+        List<Order> orders2 = d2.getOrders();
         int ordersNum1 = orders1.size();
         int ordersNum2 = orders2.size();
         if(ordersNum1 == 0 || ordersNum2 == 0)
@@ -115,12 +115,4 @@ public class Shuffler {
 
     }
 
-    private int generateRandomExclusive(int bound, int excluded){
-        int r;
-        if((random.nextInt(2) == 0 || bound == excluded + 1) && excluded != 0)
-            r = random.nextInt(excluded);
-        else
-            r = random.nextInt(bound - excluded -1) + excluded + 1;
-        return r;
-    }
 }
