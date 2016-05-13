@@ -20,5 +20,6 @@
          },
          "quantity":5
       }
-   ]
+   ],
+   "velocity" : 50
 }
