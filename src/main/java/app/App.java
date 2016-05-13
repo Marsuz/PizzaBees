@@ -52,8 +52,8 @@ public class App {
             orders.add(i, new Order(i, i , i));
 
 
-        System.out.println(restaurants);
-        System.out.println(orders);
+        logger.info("Restaurants: " +restaurants);
+        logger.info("Orders: " + orders);
 
         Solver solver = new Solver();
         SettingFactory settingFactory = new RandomSettingFactory(restaurants, orders);
