@@ -44,13 +44,13 @@ public class SavedStateDeserializer implements JsonDeserializer<SavedState> {
 			orderList.add(processOneOrder(order));
 		}
 
-		final JsonPrimitive velocityJson = mainJsonObject.getAsJsonPrimitive("velocity");
+		final JsonPrimitive velocityJson = mainJsonObject.getAsJsonPrimitive("V");
 		Preconditions.checkNotNull(velocityJson, "No velocity present in json!");
 		int velocity = velocityJson.getAsInt();
 		logger.info(String.format("Setting velocity for class %s as %d",Courier.class,velocity));
 		Courier.velocity = velocity;
 
-		return new SavedState(restaurantList,p,orderList);
+		return new SavedState(restaurantList,p, velocity, orderList);
 	}
 
 	private Order processOneOrder(JsonElement jsonOrderElement) {

@@ -19,6 +19,7 @@ public class ClosePointsGenerator implements Generator {
     private int restaurantsNumber;
     private int ordersNumber;
     private int P;
+    private int couriersVelocity;
     private int maxCourierNumber;
     private int maxOrderQuantity;
     private int howCloseRestaurants;
@@ -27,10 +28,11 @@ public class ClosePointsGenerator implements Generator {
     private boolean tooLittleSpaceForRestaurants;
     private List<Pair> possibleLocations;
 
-    public ClosePointsGenerator(int restaurantsNumber, int ordersNumber, int p, int maxCourierNumber, int maxOrderQuantity, int howCloseRestaurants, int howCloseOrders) {
+    public ClosePointsGenerator(int restaurantsNumber, int ordersNumber, int p, int velocity, int maxCourierNumber, int maxOrderQuantity, int howCloseRestaurants, int howCloseOrders) {
         this.restaurantsNumber = restaurantsNumber;
         this.ordersNumber = ordersNumber;
         P = p;
+        couriersVelocity = velocity;
         this.maxCourierNumber = maxCourierNumber;
         this.maxOrderQuantity = maxOrderQuantity;
         this.howCloseRestaurants = howCloseRestaurants;
@@ -90,6 +92,10 @@ public class ClosePointsGenerator implements Generator {
 
     public int getP() {
         return P;
+    }
+
+    public int getV() {
+        return couriersVelocity;
     }
 
     private class Pair {

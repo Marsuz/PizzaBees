@@ -13,5 +13,6 @@ public interface Generator {
     List<Order> getOrders();
     List<Restaurant> getRestaurants();
     int getP();
+    int getV();
 
 }

@@ -16,6 +16,7 @@ public class InLinePointsGenerator implements Generator {
     private int restaurantsNumber;
     private int ordersNumber;
     private int P;
+    private int V;
     private int maxCourierNumber;
     private int maxOrderQuantity;
 
@@ -34,4 +35,11 @@ public class InLinePointsGenerator implements Generator {
     public int getP() {
         return 0;
     }
+
+    @Override
+    public int getV() {
+        return 0;
+    }
+
+
 }
