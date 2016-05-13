@@ -83,7 +83,7 @@ public class RandomSetting extends Setting {
      * swap between 2 deliveries in 2 different restaurants
      */
     private void swapRestaurants() throws FailedShuffleException {
-        int i = random.nextInt(random.nextInt(restaurants.size()));
+        int i = random.nextInt(restaurants.size());
         int j = RandomGenerator.generateRandomExclusive(restaurants.size(), i);
         Restaurant r1 = restaurants.get(i);
         Restaurant r2 = restaurants.get(j);
@@ -110,8 +110,9 @@ public class RandomSetting extends Setting {
      * move between 2 deliveries in 2 different restaurants
      */
     private void moveRestaurants() throws FailedShuffleException {
-        int i = random.nextInt(random.nextInt(restaurants.size()));
-        int j = RandomGenerator.generateRandomExclusive(restaurants.size(), i);
+        final int sizeOfRestaurants = restaurants.size();
+        int i = random.nextInt(sizeOfRestaurants);
+        int j = RandomGenerator.generateRandomExclusive(sizeOfRestaurants, i);
         Restaurant r1 = restaurants.get(i);
         Restaurant r2 = restaurants.get(j);
         shuffler.move(r1, r2);
