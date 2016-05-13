@@ -1,4 +1,4 @@
-package app;
+package app.savedSate;
 
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonArray;
@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
 
-class SavedStateDeserializer implements JsonDeserializer<SavedState> {
+public class SavedStateDeserializer implements JsonDeserializer<SavedState> {
 
 	private static final Logger logger = Logger.getLogger(SavedStateDeserializer.class);
 

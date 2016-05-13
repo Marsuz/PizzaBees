@@ -1,5 +1,7 @@
 package app;
 
+import app.savedSate.SavedState;
+import app.savedSate.SavedStateDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.apache.commons.io.FileUtils;
@@ -40,5 +42,10 @@ public class AppInput {
 		return savedState;
 	}
 
+
+	public static void main(String[] args) {
+		AppInput appInput = new AppInput("/home/marcin/Development/Studies/PizzaBees/src/main/resources/inputSample.json");
+		System.out.println();
+	}
 
 }
