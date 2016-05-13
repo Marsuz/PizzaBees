@@ -40,15 +40,5 @@ public class AppInput {
 		return savedState;
 	}
 
-	/*
-		private static String convertToJson(AppInput input) {
-			Gson gson = new Gson();
-			return gson.toJson(input);
-		}
-	*/
-	public static void main(String[] args) {
-		AppInput appInput = new AppInput("/home/marcin/Development/Studies/PizzaBees/src/main/resources/inputSample.json");
-		System.out.println();
-	}
 
 }
