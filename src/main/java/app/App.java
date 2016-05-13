@@ -38,7 +38,6 @@ public class App {
         AppInput appInput = new AppInput(resource.getPath());
         SavedState savedState = appInput.getSavedState();
         Restaurant.P = 10;
-        Courier.velocity = 10; //TODO
         int restaurantsNumber = 2;
         int ordersNumber = 10;
         int couriersNumber = 5;
