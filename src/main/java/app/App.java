@@ -2,12 +2,12 @@ package app;
 
 import app.savedSate.SavedState;
 import com.google.common.base.Preconditions;
-import model.Courier;
 import model.Order;
 import model.Restaurant;
 import model.Setting;
 import org.apache.log4j.Logger;
 import solver.Solver;
+import solver.SolverParameters;
 import solver.setting.SettingFactory;
 import solver.setting.random.RandomSettingFactory;
 
@@ -57,27 +57,19 @@ public class App {
         Solver solver = new Solver();
         SettingFactory settingFactory = new RandomSettingFactory(restaurants, orders);
 
+        //FIXME builder pattern maybe?
+        SolverParameters solverParameters = new SolverParameters();
+        solverParameters.setDistanceWage(1);
+        solverParameters.setScouts(100);
+        solverParameters.setTimeWage(1d);
+        solverParameters.setSelectedSites(10);
+        solverParameters.setBestSites(5);
+        solverParameters.setEliteQuantity(8);
+        solverParameters.setNormalQuantity(3);
+        solverParameters.setIterations(25);
+        solverParameters.setMoves(5);
 
-        double distanceWage = 1;
-        double timeWage = 1;
-        int scouts = 100;
-        int selectedSites = 10;
-        int bestSites = 5;
-        int eliteQuantity = 8;
-        int normalQuantity = 3;
-        int iterations = 25;
-        int moves = 5;
-
-       Setting result = solver.solve(settingFactory,
-                distanceWage,
-                timeWage,
-                scouts,
-                selectedSites,
-                bestSites,
-                eliteQuantity,
-                normalQuantity,
-                iterations,
-                moves);
+        Setting result = solver.solve(settingFactory, solverParameters);
 
         ResultsDumper.dumpResultsToFile(outputPath, result);
     }

@@ -20,25 +20,18 @@ public class Solver {
 //        beginRestaurants = restaurants;
 //    }
 
-    public Setting solve(
-            SettingFactory factory,
-            double distanceWage,
-            double timeWage,
-            int scoutsQuantity,
-            int selectedSites,
-            int bestSites,
-            int eliteQuantity,
-            int normalQuantity,
-            int iterations,
-            int movesNum
-    ){
-        List<Setting> iterationSettings = new ArrayList<>();
-        IntStream.range(0, scoutsQuantity).forEach(
-                n -> iterationSettings.add(n, factory.getInitialSetting())
-        );
+	public Setting solve(SettingFactory factory, SolverParameters solverParameters) {
+		List<Setting> iterationSettings = new ArrayList<>();
+		int scoutsQuantity = solverParameters.getScouts();
+		IntStream.range(0, scoutsQuantity).forEach(
+				n -> iterationSettings.add(n, factory.getInitialSetting())
+		);
 
-        while(iterations-- != 0) { // TODO: second stop condition
-            List<Setting> newSetting = new ArrayList<>();
+		int iterations = solverParameters.getIterations();
+		double distanceWage = solverParameters.getDistanceWage();
+		double timeWage = solverParameters.getTimeWage();
+		while (iterations-- != 0) { // TODO: second stop condition
+			List<Setting> newSetting = new ArrayList<>();
 
             Collections.sort(iterationSettings,
                     (s1, s2) -> Double.compare(
@@ -47,9 +40,12 @@ public class Solver {
                     )
             );
 
-            IntStream.range(0, bestSites).forEach(
-                    n -> {
-                        List<Setting> tempSettings = new ArrayList<>();
+			int bestSites = solverParameters.getBestSites();
+			int eliteQuantity = solverParameters.getEliteQuantity();
+			int movesNum = solverParameters.getMoves();
+			IntStream.range(0, bestSites).forEach(
+					n -> {
+						List<Setting> tempSettings = new ArrayList<>();
                         IntStream.range(0, eliteQuantity).forEach(
                                 m -> tempSettings.add(iterationSettings.get(n).getNeighbour(movesNum))
                         );
@@ -63,9 +59,11 @@ public class Solver {
                     }
 
             );
-            IntStream.range(bestSites, selectedSites).forEach(
-                    n -> {
-                        List<Setting> tempSettings = new ArrayList<>();
+			int selectedSites = solverParameters.getSelectedSites();
+			int normalQuantity = solverParameters.getNormalQuantity();
+			IntStream.range(bestSites, selectedSites).forEach(
+					n -> {
+						List<Setting> tempSettings = new ArrayList<>();
                         IntStream.range(0, normalQuantity).forEach(
                                 m -> tempSettings.add(iterationSettings.get(n).getNeighbour(movesNum))
                         );
