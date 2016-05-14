@@ -21,4 +21,11 @@ public class Order {
         return quantity;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "destination=" + destination +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

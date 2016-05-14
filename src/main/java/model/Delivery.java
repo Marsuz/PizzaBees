@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Delivery {
@@ -34,7 +35,13 @@ public class Delivery {
         }
 
         distance += temp.getDistance(restaurant);
-
         return distance;
+    }
+
+    @Override
+    public String toString() {
+        return "Delivery{" +
+                "orders=" + Arrays.toString(orders.toArray()) +
+                '}';
     }
 }

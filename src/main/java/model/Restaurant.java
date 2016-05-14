@@ -2,7 +2,6 @@ package model;
 
 import model.event.CourierEvent;
 import model.event.DeliveryEvent;
-import model.event.EventComparator;
 import model.event.RestaurantEvent;
 
 import java.util.*;
@@ -20,9 +19,33 @@ public class Restaurant extends Location {
     public Restaurant(int x, int y, int courierNumber) {
         super(x, y);
         this.courierNumber = courierNumber;
-        couriers = new HashSet<Courier>();
+        couriers = new HashSet<>();
+        initCouriers(courierNumber);
+        deliveries =  new ArrayList<>();
+    }
+
+    public Restaurant(int x, int y) {
+        super(x, y);
+        couriers = new HashSet<>();
+        deliveries =  new ArrayList<>();
+    }
+
+    public Restaurant(Restaurant restaurant) {
+        super(restaurant.x, restaurant.y);
+        this.courierNumber = restaurant.courierNumber;
+        couriers = new HashSet<>();
+        initCouriers(courierNumber);
+        deliveries =  new ArrayList<>();
+    }
+
+    public void setCourierNumber(int courierNumber) {
+        this.courierNumber = courierNumber;
+        initCouriers(this.courierNumber);
+    }
+
+    public void initCouriers(int courierNumber) {
+        this.courierNumber = courierNumber;
         for(int i = 0; i < courierNumber; i++) couriers.add(new Courier());
-        deliveries =  new ArrayList<Delivery>();
     }
 
     public Set<Courier> getCouriers() {
@@ -38,7 +61,7 @@ public class Restaurant extends Location {
     }
 
     public void addDelivery(Delivery delivery){
-            this.deliveries.add(delivery);
+        this.deliveries.add(delivery);
     }
 
     public void simulate(){
@@ -47,22 +70,17 @@ public class Restaurant extends Location {
         Queue<Courier> freeCouriers = new LinkedList<>();
         Queue<Delivery> readyDeliveries = new LinkedList<>();
 
-        Queue<RestaurantEvent> events = new PriorityQueue<>(new EventComparator());
-
+        Queue<RestaurantEvent> events = new PriorityQueue<>(RestaurantEvent.BY_TIME);
         for(Delivery d: deliveries){
             currTime += d.getQuantity() * P;
 
             events.add(new DeliveryEvent(currTime, this, d));
         }
 
-        for(Courier c: couriers){
-            events.add(new CourierEvent(c, this));
-        }
+        couriers.stream().forEach(c -> events.add(new CourierEvent(c, this)));
 
         while(!events.isEmpty()){
-            RestaurantEvent tmp = events.remove();
-            System.out.println(tmp.getClass() + " time:" + tmp.getTime());
-            tmp.sortMyself(freeCouriers, readyDeliveries, events);
+            events.remove().sortMyself(freeCouriers, readyDeliveries, events);
         }
 
     }
@@ -87,4 +105,12 @@ public class Restaurant extends Location {
         return max;
     }
 
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "courierNumber=" + courierNumber +
+                ", couriers=" + Arrays.toString(couriers.toArray()) +
+                ", deliveries=" + Arrays.toString(deliveries.toArray()) +
+                '}';
+    }
 }

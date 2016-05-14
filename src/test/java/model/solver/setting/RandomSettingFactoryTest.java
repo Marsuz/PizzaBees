@@ -5,7 +5,7 @@ import model.Order;
 import model.Restaurant;
 import org.junit.Before;
 import org.junit.Test;
-import solver.setting.RandomSettingFactory;
+import solver.setting.random.RandomSettingFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +36,12 @@ public class RandomSettingFactoryTest {
             orders.add(new Order(i, i, i));
         }
 
-        randomSettingFactory = new RandomSettingFactory(restaurants);
+        randomSettingFactory = new RandomSettingFactory(restaurants, orders);
     }
 
     @Test
     public void testGetInitialSetting(){
-        List<Restaurant> restaurantsWithSettings = randomSettingFactory.getInitialSetting(orders);
+        List<Restaurant> restaurantsWithSettings = randomSettingFactory.getInitialSetting().getRestaurants();
         int setOrdersNumber = 0;
 
         for(Restaurant r: restaurantsWithSettings)

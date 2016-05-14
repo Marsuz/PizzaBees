@@ -1,14 +1,15 @@
 package model;
 
-import solver.setting.SettingFactory;
-
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Admin on 2016-04-22.
  */
-public class Setting {
-    private List<Restaurant> restaurants;
+public abstract class Setting {
+    protected List<Restaurant> restaurants;
+    protected long fullDistance;
+    protected long maxTime;
 
     public Setting(List<Restaurant> restaurants){
         this.restaurants = restaurants;
@@ -16,9 +17,7 @@ public class Setting {
         for(Restaurant r: restaurants){
             r.simulate();
         }
-    }
 
-    public double getFitness(double distanceWage, double timeWage){
         long distance = 0;
         long time = 0;
 
@@ -27,10 +26,26 @@ public class Setting {
             time = Long.max(time, r.maxTime());
         }
 
-        return distance * distanceWage + time * timeWage;
+        fullDistance = distance;
+        maxTime = time;
     }
 
-    public Setting getNeighbour(SettingFactory factory){
-        return new Setting(factory.getNeighbourSetting(restaurants));
+    public double getFitness(double distanceWage, double timeWage){
+        return fullDistance * distanceWage + maxTime * timeWage;
+    }
+
+    public abstract Setting getNeighbour(int moves);
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    @Override
+    public String toString() {
+        return "Setting{" +
+                "restaurants=" + Arrays.toString(restaurants.toArray()) +
+                ", fullDistance=" + fullDistance +
+                ", maxTime=" + maxTime +
+                '}';
     }
 }
