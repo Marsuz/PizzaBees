@@ -1,12 +1,12 @@
 {
   "random": {
-    "seed": 160895542674536,
+    "seed": 88628340874884,
     "nextNextGaussian": 0.0,
     "haveNextNextGaussian": false
   },
   "shuffler": {
     "random": {
-      "seed": 259579775719819,
+      "seed": 225187137112916,
       "nextNextGaussian": 0.0,
       "haveNextNextGaussian": false
     }
@@ -16,7 +16,7 @@
       "courierNumber": 5,
       "couriers": [
         {
-          "time": 4473
+          "time": 30
         },
         {
           "time": 0
@@ -28,7 +28,7 @@
           "time": 0
         },
         {
-          "time": 0
+          "time": 240
         }
       ],
       "deliveries": [
@@ -36,27 +36,6 @@
           "orders": [
             {
               "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
                 "x": 0,
                 "y": 0
               },
@@ -71,67 +50,15 @@
             },
             {
               "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
                 "x": 2,
                 "y": 2
               },
               "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
+            }
+          ]
+        },
+        {
+          "orders": [
             {
               "destination": {
                 "x": 6,
@@ -141,73 +68,10 @@
             },
             {
               "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
                 "x": 7,
                 "y": 7
               },
               "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 1,
-                "y": 1
-              },
-              "quantity": 1
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
             },
             {
               "destination": {
@@ -215,566 +79,6 @@
                 "y": 8
               },
               "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 1,
-                "y": 1
-              },
-              "quantity": 1
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 4,
-                "y": 4
-              },
-              "quantity": 4
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 1,
-                "y": 1
-              },
-              "quantity": 1
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
-            },
-            {
-              "destination": {
-                "x": 7,
-                "y": 7
-              },
-              "quantity": 7
             }
           ]
         }
@@ -786,7 +90,7 @@
       "courierNumber": 5,
       "couriers": [
         {
-          "time": 1424
+          "time": 120
         },
         {
           "time": 0
@@ -798,7 +102,7 @@
           "time": 0
         },
         {
-          "time": 0
+          "time": 210
         }
       ],
       "deliveries": [
@@ -813,206 +117,10 @@
             },
             {
               "destination": {
-                "x": 3,
-                "y": 3
+                "x": 4,
+                "y": 4
               },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 5,
-                "y": 5
-              },
-              "quantity": 5
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 5,
-                "y": 5
-              },
-              "quantity": 5
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 9,
-                "y": 9
-              },
-              "quantity": 9
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 8,
-                "y": 8
-              },
-              "quantity": 8
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 3,
-                "y": 3
-              },
-              "quantity": 3
-            },
-            {
-              "destination": {
-                "x": 0,
-                "y": 0
-              },
-              "quantity": 0
-            },
-            {
-              "destination": {
-                "x": 6,
-                "y": 6
-              },
-              "quantity": 6
-            },
-            {
-              "destination": {
-                "x": 2,
-                "y": 2
-              },
-              "quantity": 2
+              "quantity": 4
             },
             {
               "destination": {
@@ -1022,12 +130,23 @@
               "quantity": 5
             }
           ]
+        },
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 9,
+                "y": 9
+              },
+              "quantity": 9
+            }
+          ]
         }
       ],
       "x": 1,
       "y": 1
     }
   ],
-  "fullDistance": 896,
-  "maxTime": 4473
+  "fullDistance": 88,
+  "maxTime": 240
 }
