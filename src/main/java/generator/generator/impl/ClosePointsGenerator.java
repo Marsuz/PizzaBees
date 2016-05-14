@@ -1,5 +1,6 @@
-package generator.generator;
+package generator.generator.impl;
 
+import generator.generator.Generator;
 import model.Order;
 import model.Restaurant;
 import org.apache.log4j.Logger;
@@ -19,7 +20,7 @@ public class ClosePointsGenerator implements Generator {
     private int restaurantsNumber;
     private int ordersNumber;
     private int P;
-    private int couriersVelocity;
+    private int V;
     private int maxCourierNumber;
     private int maxOrderQuantity;
     private int howCloseRestaurants;
@@ -28,11 +29,11 @@ public class ClosePointsGenerator implements Generator {
     private boolean tooLittleSpaceForRestaurants;
     private List<Pair> possibleLocations;
 
-    public ClosePointsGenerator(int restaurantsNumber, int ordersNumber, int p, int velocity, int maxCourierNumber, int maxOrderQuantity, int howCloseRestaurants, int howCloseOrders) {
+    public ClosePointsGenerator(int restaurantsNumber, int ordersNumber, int p, int v, int maxCourierNumber, int maxOrderQuantity, int howCloseRestaurants, int howCloseOrders) {
         this.restaurantsNumber = restaurantsNumber;
         this.ordersNumber = ordersNumber;
         P = p;
-        couriersVelocity = velocity;
+        V = v;
         this.maxCourierNumber = maxCourierNumber;
         this.maxOrderQuantity = maxOrderQuantity;
         this.howCloseRestaurants = howCloseRestaurants;
@@ -95,7 +96,7 @@ public class ClosePointsGenerator implements Generator {
     }
 
     public int getV() {
-        return couriersVelocity;
+        return V;
     }
 
     private class Pair {
