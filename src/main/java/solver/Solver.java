@@ -40,8 +40,8 @@ public class Solver {
 
         Collections.sort(iterationSettings,
                 (s1, s2) -> Double.compare(
-                        s2.getFitness(distanceWage, timeWage),
-                        s1.getFitness(distanceWage, timeWage)
+                        s1.getFitness(distanceWage, timeWage),
+                        s2.getFitness(distanceWage, timeWage)
                 )
         );
 
@@ -56,8 +56,8 @@ public class Solver {
                     );
                     Collections.sort(tempSettings,
                             (s1, s2) -> Double.compare(
-                                    s2.getFitness(distanceWage, timeWage),
-                                    s1.getFitness(distanceWage, timeWage)
+                                    s1.getFitness(distanceWage, timeWage),
+                                    s2.getFitness(distanceWage, timeWage)
                             )
                     );
                     newSetting.add(tempSettings.get(0));
@@ -74,8 +74,8 @@ public class Solver {
                     );
                     Collections.sort(tempSettings,
                             (s1, s2) -> Double.compare(
-                                    s2.getFitness(distanceWage, timeWage),
-                                    s1.getFitness(distanceWage, timeWage)
+                                    s1.getFitness(distanceWage, timeWage),
+                                    s2.getFitness(distanceWage, timeWage)
                             )
                     );
                     newSetting.add(tempSettings.get(0));
