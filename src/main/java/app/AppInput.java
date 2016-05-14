@@ -15,11 +15,21 @@ public class AppInput {
 	private static final Logger logger = Logger.getLogger(AppInput.class);
 	private SavedState savedState;
 
-	public AppInput(String pathToInputFile) {
+	private static Gson stateGson() {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.setPrettyPrinting().registerTypeAdapter(SavedState.class,new SavedStateDeserializer());
-		Gson gson = gsonBuilder.create();
+		return gsonBuilder.create();
+	}
 
+	public static SavedState stringToState(String json) throws IOException {
+		return stateGson().fromJson(json, SavedState.class);
+	}
+
+	public static String stateToString(SavedState state) {
+		return stateGson().toJson(state);
+	}
+
+	public AppInput(String pathToInputFile) {
 		File inputFile = new File(pathToInputFile);
 		if (!inputFile.exists()) {
 			logger.error(String.format("File with path: %s not exist", pathToInputFile));
@@ -31,8 +41,8 @@ public class AppInput {
 		}
 		try {
 			String jsonContentOfFile = FileUtils.readFileToString(inputFile, Charset.forName("UTF-8"));
-			savedState = gson.fromJson(jsonContentOfFile, SavedState.class);
-			logger.debug(String.format("Resolved app state:\n %s", gson.toJson(savedState)));
+			savedState = stringToState(jsonContentOfFile);
+			logger.debug(String.format("Resolved app state:\n %s", stateToString(savedState)));
 		} catch (IOException e) {
 			logger.error(String.format("Error while reading from file: %s", inputFile.getAbsolutePath()), e);
 		}

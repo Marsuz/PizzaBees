@@ -67,7 +67,7 @@ public class SolverParameters {
 		this.moves = moves;
 	}
 
-	int getIterations() {
+	public int getIterations() {
 		return iterations;
 	}
 

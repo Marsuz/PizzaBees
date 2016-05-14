@@ -1,25 +1,152 @@
 {
-   "restaurants":[
-      {
-         "courierNumber":5,
-         "x":10,
-         "y":10
-      },
-      {
-         "courierNumber":10,
-         "x":20,
-         "y":15
-      }
-   ],
-   "P":10,
-   "orders":[
-      {
-         "destination":{
-            "x":20,
-            "y":20
-         },
-         "quantity":5
-      }
-   ],
-   "V" : 50
+  "random": {
+    "seed": 102626972028912,
+    "nextNextGaussian": 0.0,
+    "haveNextNextGaussian": false
+  },
+  "shuffler": {
+    "random": {
+      "seed": 36235393738513,
+      "nextNextGaussian": 0.0,
+      "haveNextNextGaussian": false
+    }
+  },
+  "restaurants": [
+    {
+      "courierNumber": 5,
+      "couriers": [
+        {
+          "time": 30
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 240
+        }
+      ],
+      "deliveries": [
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 0,
+                "y": 0
+              },
+              "quantity": 0
+            },
+            {
+              "destination": {
+                "x": 1,
+                "y": 1
+              },
+              "quantity": 1
+            },
+            {
+              "destination": {
+                "x": 2,
+                "y": 2
+              },
+              "quantity": 2
+            }
+          ]
+        },
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 6,
+                "y": 6
+              },
+              "quantity": 6
+            },
+            {
+              "destination": {
+                "x": 7,
+                "y": 7
+              },
+              "quantity": 7
+            },
+            {
+              "destination": {
+                "x": 8,
+                "y": 8
+              },
+              "quantity": 8
+            }
+          ]
+        }
+      ],
+      "x": 0,
+      "y": 0
+    },
+    {
+      "courierNumber": 5,
+      "couriers": [
+        {
+          "time": 120
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 210
+        }
+      ],
+      "deliveries": [
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 3,
+                "y": 3
+              },
+              "quantity": 3
+            },
+            {
+              "destination": {
+                "x": 4,
+                "y": 4
+              },
+              "quantity": 4
+            },
+            {
+              "destination": {
+                "x": 5,
+                "y": 5
+              },
+              "quantity": 5
+            }
+          ]
+        },
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 9,
+                "y": 9
+              },
+              "quantity": 9
+            }
+          ]
+        }
+      ],
+      "x": 1,
+      "y": 1
+    }
+  ],
+  "fullDistance": 88,
+  "maxTime": 240
 }
