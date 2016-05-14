@@ -44,7 +44,7 @@ public class Restaurant extends Location {
 
     public void setCourierNumber(int courierNumber) {
         this.courierNumber = courierNumber;
-        initCouriers(this.courierNumber);
+        //initCouriers(this.courierNumber);
     }
 
     public void initCouriers(int courierNumber) {
