@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,30 @@ public abstract class Setting {
 
     public Setting(List<Restaurant> restaurants){
         this.restaurants = restaurants;
+
+        for(Restaurant r: restaurants){
+            r.simulate();
+        }
+
+        long distance = 0;
+        long time = 0;
+
+        for(Restaurant r: restaurants){
+            distance += r.getDistance();
+            time = Long.max(time, r.maxTime());
+        }
+
+        fullDistance = distance;
+        maxTime = time;
+    }
+
+    public Setting(Setting other){
+        this.restaurants = new ArrayList<>();
+
+        for(Restaurant r: other.restaurants)
+            this.restaurants.add(new Restaurant(r));
+
+        //TODO Better algorithm for calculating changes
 
         for(Restaurant r: restaurants){
             r.simulate();

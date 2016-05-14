@@ -99,8 +99,8 @@ public class Solver {
 
         Collections.sort(iterationSettings,
                 (s1, s2) -> Double.compare(
-                        s2.getFitness(distanceWage, timeWage),
-                        s1.getFitness(distanceWage, timeWage)
+                        s1.getFitness(distanceWage, timeWage),
+                        s2.getFitness(distanceWage, timeWage)
                 )
         );
         return iterationSettings.get(0);

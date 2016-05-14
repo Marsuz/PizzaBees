@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,6 +10,14 @@ public class Delivery {
 
     public Delivery(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public Delivery(Delivery other){
+        this.orders = new ArrayList<>();
+
+        for(Order x: other.orders){
+            this.orders.add(x);
+        }
     }
 
     public List<Order> getOrders() {
