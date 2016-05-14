@@ -1,7 +1,12 @@
 package gui;
 
 import app.AppInput;
+import app.savedSate.SavedState;
+import model.Setting;
 import org.apache.log4j.Logger;
+import solver.SolverParameters;
+import solver.setting.SettingFactory;
+import solver.setting.random.RandomSettingFactory;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -20,8 +25,6 @@ import java.util.concurrent.ExecutionException;
  * Created by sjchmiela on 26.04.2016.
  */
 public class Dashboard extends JFrame implements WorkerGraphicalManager {
-    private static final int iterations = 3000;
-
     private JPanel rootPanel;
     private JTextArea inputTextArea;
     private JTextField fileTextField;
@@ -34,7 +37,7 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
 
     private JFileChooser fileChooser = new JFileChooser();
 
-    private AppWorker appWorker = null;
+    private SwingWorker appWorker = null;
 
     /**
      * Returns JFrame object properly configured for showing with `setVisible(true)`.
@@ -79,8 +82,22 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      * @see AppWorkerPropertyChangeListener
      * @return      AppWorker object
      */
-    private AppWorker initializeAppWorker() {
-        AppWorker worker = new AppWorker(this, iterations, inputTextArea.getText());
+    private SwingWorker initializeAppWorker() throws IOException {
+        SavedState state = AppInput.stringToState(this.inputTextArea.getText());
+        SettingFactory settingFactory = new RandomSettingFactory(state.getRestaurants(), state.getOrders());
+
+        SolverParameters solverParameters = new SolverParameters();
+        solverParameters.setDistanceWage(1);
+        solverParameters.setScouts(100);
+        solverParameters.setTimeWage(1d);
+        solverParameters.setSelectedSites(10);
+        solverParameters.setBestSites(5);
+        solverParameters.setEliteQuantity(8);
+        solverParameters.setNormalQuantity(3);
+        solverParameters.setIterations(25);
+        solverParameters.setMoves(5);
+
+        SolverWorker worker = new SolverWorker(this, settingFactory, solverParameters);
         worker.addPropertyChangeListener(new AppWorkerPropertyChangeListener(this, worker));
         return worker;
     }
@@ -93,8 +110,12 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     private void runButtonClicked() {
         if (appWorker == null) {
             prepareInterfaceForWorker(true);
-            appWorker = initializeAppWorker();
-            appWorker.execute();
+            try {
+                appWorker = initializeAppWorker();
+                appWorker.execute();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             appWorker.cancel(true);
             appWorker = null;
