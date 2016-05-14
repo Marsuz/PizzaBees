@@ -37,7 +37,7 @@ public class SquarePlacedGenerator implements Generator {
             for (int j = 0; j <= 1; j++) {
                 for (int k = -1; k <= 1; k++) {
                     for (int m = -1; m <= 1; m++) {
-                        if (k != m) {
+                        if (Math.abs(k) != Math.abs(m)) {
                             Order order = new Order(baseX + j * baseX + k * (distanceBetweenRestaurants / 3), baseY + i * baseY + m * (distanceBetweenRestaurants /3), maxOrderQuantity);
                             orders.add(order);
                         }

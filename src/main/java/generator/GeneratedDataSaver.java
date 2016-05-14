@@ -24,7 +24,7 @@ public class GeneratedDataSaver {
     private static String DEFAULT_FILEPATH = DEFAULT_FILEPATH_CLOSE_POINTS;
     private Generator generator;
 
-    public void generateAndSaveData(String filePath, int mode, int[] params) {
+    public void generateAndSaveData(String filePath, int[] params) {
 
 
         generator = null;
@@ -57,6 +57,13 @@ public class GeneratedDataSaver {
             LOGGER.error("Problem occurred processing generated data file", ex);
             System.exit(1);
         }
+    }
+
+    public static void main(String[] args) {
+        GeneratedDataSaver saver = new GeneratedDataSaver();
+        saver.generateAndSaveData(null, new int[]{10, 20, 5, 5, 5, 5, 1, 1});
+        saver.generateAndSaveData(null, new int[]{10, 3, 5, 5, 10, 5, 5});
+        saver.generateAndSaveData(null, new int[]{5, 5, 5, 5, 20});
     }
 
 }
