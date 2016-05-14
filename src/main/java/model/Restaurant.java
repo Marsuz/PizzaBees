@@ -36,6 +36,10 @@ public class Restaurant extends Location {
         couriers = new HashSet<>();
         initCouriers(courierNumber);
         deliveries =  new ArrayList<>();
+
+        for(Delivery d: restaurant.deliveries){
+            this.deliveries.add(new Delivery(d));
+        }
     }
 
     public void setCourierNumber(int courierNumber) {

@@ -23,13 +23,21 @@ public class RandomSetting extends Setting {
         this.shuffler = new Shuffler();
     }
 
+    public RandomSetting(RandomSetting other){
+        super(other);
+
+        this.shuffler = new Shuffler();
+    }
+
     @Override
     public Setting getNeighbour(int shuffles) {
 
-        for(int i = 0; i < shuffles; i++)
-            doShuffle();
+        RandomSetting newSetting = new RandomSetting(this);
 
-        return new RandomSetting(new ArrayList<>(restaurants));
+        for(int i = 0; i < shuffles; i++)
+            newSetting.doShuffle();
+
+        return newSetting;
     }
 
     void doShuffle(){

@@ -44,7 +44,8 @@ public class AppInput {
 
 
 	public static void main(String[] args) {
-		AppInput appInput = new AppInput("/home/marcin/Development/Studies/PizzaBees/src/main/resources/inputSample.json");
+		AppInput appInput = new AppInput("C:\\Users\\Admin\\Documents\\GitHub\\PizzaBess\\src\\main\\resources\\inputSample.json");
+
 		System.out.println();
 	}
 
