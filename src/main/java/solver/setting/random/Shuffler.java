@@ -23,7 +23,7 @@ public class Shuffler {
     public void swap(Delivery d) throws FailedShuffleException {
         List<Order> orders = d.getOrders();
         int ordersNum = orders.size();
-        if(ordersNum == 1)
+        if(ordersNum <= 1)
             throw new FailedShuffleException();
 
         int i = random.nextInt(ordersNum);
