@@ -31,7 +31,7 @@ public class Solver {
         return iterationSettings;
     }
 
-    public void solveIteration(List<Setting> iterationSettings, SettingFactory factory, SolverParameters solverParameters) {
+    public List<Setting> solveIteration(List<Setting> iterationSettings, SettingFactory factory, SolverParameters solverParameters) {
         double distanceWage = solverParameters.getDistanceWage();
         double timeWage = solverParameters.getTimeWage();
         int scoutsQuantity = solverParameters.getScouts();
@@ -90,6 +90,7 @@ public class Solver {
 
         iterationSettings.clear();
         iterationSettings.addAll(newSetting);
+        return iterationSettings;
     }
 
     public Setting bestSetting(List<Setting> iterationSettings, SolverParameters solverParameters) {
@@ -109,7 +110,7 @@ public class Solver {
         List<Setting> iterationSettings = initialSettings(factory, solverParameters);
 
         for(int i = 0; i < solverParameters.getIterations(); i++) { // TODO: second stop condition
-            solveIteration(iterationSettings, factory, solverParameters);
+            iterationSettings = solveIteration(iterationSettings, factory, solverParameters);
         }
 
         return bestSetting(iterationSettings, solverParameters);
