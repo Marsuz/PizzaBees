@@ -19,13 +19,15 @@ public class SquarePlacedGenerator implements Generator {
     private int distanceBetweenRestaurants;
     private int baseX;
     private int baseY;
+    private int stepDivideFactor = 3;
 
-    public SquarePlacedGenerator(int maxOrderQuantity, int maxCourierNumber, int p, int v, int distanceBetweenRestaurants) {
+    public SquarePlacedGenerator(int maxOrderQuantity, int maxCourierNumber, int p, int v, int distanceBetweenRestaurants, int stepDivideFactor) {
         this.maxOrderQuantity = maxOrderQuantity;
         this.maxCourierNumber = maxCourierNumber;
         P = p;
         V = v;
         this.distanceBetweenRestaurants = distanceBetweenRestaurants;
+        this.stepDivideFactor = stepDivideFactor;
         baseX = distanceBetweenRestaurants;
         baseY = distanceBetweenRestaurants;
     }
@@ -38,7 +40,7 @@ public class SquarePlacedGenerator implements Generator {
                 for (int k = -1; k <= 1; k++) {
                     for (int m = -1; m <= 1; m++) {
                         if (Math.abs(k) != Math.abs(m)) {
-                            Order order = new Order(baseX + j * baseX + k * (distanceBetweenRestaurants / 3), baseY + i * baseY + m * (distanceBetweenRestaurants /3), maxOrderQuantity);
+                            Order order = new Order(baseX + j * baseX + k * (distanceBetweenRestaurants / stepDivideFactor), baseY + i * baseY + m * (distanceBetweenRestaurants /stepDivideFactor), maxOrderQuantity);
                             orders.add(order);
                         }
                     }

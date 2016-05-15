@@ -20,8 +20,9 @@ public class RectangleFilledPointsGenerator implements Generator {
     private int restaurantsNumber;
     private int P = 5;
     private int V = 5;
+    private int stepDivideFactor = 3;
 
-    public RectangleFilledPointsGenerator(int restaurantsNumber, int numberOfLines, int maxCourierNumber, int maxOrderQuantity, int step, int P, int V) {
+    public RectangleFilledPointsGenerator(int restaurantsNumber, int numberOfLines, int maxCourierNumber, int maxOrderQuantity, int step, int P, int V, int stepDivideFactor) {
         this.restaurantsNumber = restaurantsNumber;
         this.numberOfLines = numberOfLines;
         this.maxCourierNumber = maxCourierNumber;
@@ -29,6 +30,7 @@ public class RectangleFilledPointsGenerator implements Generator {
         this.step = step;
         this.P = P;
         this.V = V;
+        this.stepDivideFactor = stepDivideFactor;
     }
 
     @Override
@@ -36,10 +38,10 @@ public class RectangleFilledPointsGenerator implements Generator {
         List<Order> orders = new ArrayList<>();
         for (int i = 0; i < restaurantsNumber; i++) {
             for (int j = 1; j <= numberOfLines; j++) {
-                Order order1 = new Order(step * (i + 1), 10 * j + step / 3, maxOrderQuantity);
-                Order order2 = new Order(step * (i + 1), 10 * j - step / 3, maxOrderQuantity);
-                Order order3 = new Order(step * (i + 1) + step / 3, 10 * j, maxOrderQuantity);
-                Order order4 = new Order(step * (i + 1) - step / 3, 10 * j, maxOrderQuantity);
+                Order order1 = new Order(step * (i + 1), 10 * j + step / stepDivideFactor, maxOrderQuantity);
+                Order order2 = new Order(step * (i + 1), 10 * j - step / stepDivideFactor, maxOrderQuantity);
+                Order order3 = new Order(step * (i + 1) + step / stepDivideFactor, 10 * j, maxOrderQuantity);
+                Order order4 = new Order(step * (i + 1) - step / stepDivideFactor, 10 * j, maxOrderQuantity);
                 orders.add(order1);
                 orders.add(order2);
                 orders.add(order3);

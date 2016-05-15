@@ -1,0 +1,6 @@
+TimeWage = 1, DistanceWage = 1 =>
+
+RestaurantsInLine1 test -> Dist = 96, Time = 22
+RestaurantsInLine2 test -> Dist = 960, Time = 39
+RestaurantsInSquare1 test -> Dist = 96, Time = 22
+RestaurantsInRectangle1 test -> Dist = 360 Time = 42
