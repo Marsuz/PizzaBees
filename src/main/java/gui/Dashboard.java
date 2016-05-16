@@ -139,6 +139,15 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     public void prepareInterfaceForWorker(boolean running) {
         boolean controlsEnabled = !running;
 
+        wagesSlider.setEnabled(controlsEnabled);
+        scoutsTextField.setEnabled(controlsEnabled);
+        eliteQuantityTextField.setEnabled(controlsEnabled);
+        normalQuantityTextField.setEnabled(controlsEnabled);
+        selectedSitesTextField.setEnabled(controlsEnabled);
+        bestSitesTextField.setEnabled(controlsEnabled);
+        iterationsTextField.setEnabled(controlsEnabled);
+        movesTextField.setEnabled(controlsEnabled);
+
         inputTextArea.setEnabled(controlsEnabled);
         fileTextField.setEnabled(controlsEnabled);
         chooseFileButton.setEnabled(controlsEnabled);
