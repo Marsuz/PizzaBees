@@ -9,6 +9,8 @@ import solver.setting.SettingFactory;
 import solver.setting.random.RandomSettingFactory;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -18,6 +20,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 
@@ -31,12 +34,20 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     private JButton chooseFileButton;
     private JButton runButton;
     private JProgressBar progressBar;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
     private JLabel progressLabel;
+    private JSlider wagesSlider;
+    private JTextField scoutsTextField;
+    private JLabel wagesLabel;
+    private JTextField eliteQuantityTextField;
+    private JTextField normalQuantityTextField;
+    private JTextField selectedSitesTextField;
+    private JTextField bestSitesTextField;
+    private JTextField iterationsTextField;
+    private JTextField movesTextField;
 
     private JFileChooser fileChooser = new JFileChooser();
 
+    private SolverParameters solverParameters;
     private SwingWorker appWorker = null;
 
     /**
@@ -44,14 +55,27 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     Dashboard() {
         super("PizzaBees");
+        solverParameters = new SolverParameters();
+        wagesSlider.addChangeListener(e -> updateWagesLabel());
+        updateWagesLabel();
         fileChooser.setFileFilter(new FileNameExtensionFilter("JSON input file", "json"));
         chooseFileButton.addActionListener(e -> chooseFileOfInput());
         runButton.addActionListener(e -> runButtonClicked());
         setContentPane(rootPanel);
-        setMinimumSize(new Dimension(800, 494));
-        setMaximumSize(new Dimension(800, 494));
-        setSize(800, 494);
+        setMinimumSize(new Dimension(800, 600));
+        setMaximumSize(new Dimension(800, 600));
+        setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    private void updateWagesLabel() {
+        int distanceValue = wagesSlider.getValue();
+        int timeValue = wagesSlider.getMaximum() - wagesSlider.getValue();
+        double distanceWage = (double)distanceValue / Math.max(distanceValue, timeValue);
+        double timeWage = (double)timeValue / Math.max(distanceValue, timeValue);
+        solverParameters.setDistanceWage(distanceWage);
+        solverParameters.setTimeWage(timeWage);
+        wagesLabel.setText(String.format(Locale.forLanguageTag("pl_PL"), "%.2f:%.2f", distanceWage, timeWage));
     }
 
     /**
@@ -84,18 +108,20 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     private SwingWorker initializeAppWorker() throws IOException {
         SavedState state = AppInput.stringToState(this.inputTextArea.getText());
+
+        if (state == null) {
+            throw new IOException("Could not deserialize state.");
+        }
+
         SettingFactory settingFactory = new RandomSettingFactory(state.getRestaurants(), state.getOrders());
 
-        SolverParameters solverParameters = new SolverParameters();
-        solverParameters.setDistanceWage(1);
-        solverParameters.setScouts(100);
-        solverParameters.setTimeWage(1d);
-        solverParameters.setSelectedSites(10);
-        solverParameters.setBestSites(5);
-        solverParameters.setEliteQuantity(8);
-        solverParameters.setNormalQuantity(3);
-        solverParameters.setIterations(25);
-        solverParameters.setMoves(5);
+        solverParameters.setScouts(Integer.parseInt(scoutsTextField.getText()));
+        solverParameters.setSelectedSites(Integer.parseInt(selectedSitesTextField.getText()));
+        solverParameters.setBestSites(Integer.parseInt(bestSitesTextField.getText()));
+        solverParameters.setEliteQuantity(Integer.parseInt(eliteQuantityTextField.getText()));
+        solverParameters.setNormalQuantity(Integer.parseInt(normalQuantityTextField.getText()));
+        solverParameters.setIterations(Integer.parseInt(iterationsTextField.getText()));
+        solverParameters.setMoves(Integer.parseInt(movesTextField.getText()));
 
         SolverWorker worker = new SolverWorker(this, settingFactory, solverParameters);
         worker.addPropertyChangeListener(new AppWorkerPropertyChangeListener(this, worker));
@@ -108,13 +134,24 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      * @see AppWorker
      */
     private void runButtonClicked() {
-        if (appWorker == null) {
-            prepareInterfaceForWorker(true);
+        if (appWorker == null || appWorker.isCancelled() || appWorker.isDone()) {
             try {
                 appWorker = initializeAppWorker();
                 appWorker.execute();
-            } catch (IOException e) {
+            } catch (com.google.gson.JsonSyntaxException e) {
                 e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error in JSON syntax", JOptionPane.ERROR_MESSAGE);
+            } catch (com.google.gson.JsonParseException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error in JSON parsing", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Could not parse one of the parameters as integer.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                prepareInterfaceForWorker(appWorker != null && !appWorker.isDone() && !appWorker.isCancelled());
             }
         } else {
             appWorker.cancel(true);
@@ -132,8 +169,15 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     public void prepareInterfaceForWorker(boolean running) {
         boolean controlsEnabled = !running;
 
-        comboBox1.setEnabled(controlsEnabled);
-        comboBox2.setEnabled(controlsEnabled);
+        wagesSlider.setEnabled(controlsEnabled);
+        scoutsTextField.setEnabled(controlsEnabled);
+        eliteQuantityTextField.setEnabled(controlsEnabled);
+        normalQuantityTextField.setEnabled(controlsEnabled);
+        selectedSitesTextField.setEnabled(controlsEnabled);
+        bestSitesTextField.setEnabled(controlsEnabled);
+        iterationsTextField.setEnabled(controlsEnabled);
+        movesTextField.setEnabled(controlsEnabled);
+
         inputTextArea.setEnabled(controlsEnabled);
         fileTextField.setEnabled(controlsEnabled);
         chooseFileButton.setEnabled(controlsEnabled);
@@ -169,5 +213,26 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     public void showMessageDialog(Object message, String title, int messageType) {
         JOptionPane.showMessageDialog(this, message, title, messageType);
+    }
+
+    /**
+     * Shows result dialog to the user with specified title, message and result.
+     *
+     * @param message Message shown in the dialog.
+     * @param title Title of the dialog.
+     * @param result Result shown in text area of the dialog.
+     * @see ResultDialog
+     * @see WorkerGraphicalManager
+     */
+    public void showResultDialog(String message, String title, String result) {
+        SwingUtilities.invokeLater(() -> {
+            ResultDialog dialog = new ResultDialog(
+                    title,
+                    message,
+                    result
+            );
+            dialog.pack();
+            dialog.setVisible(true);
+        });
     }
 }

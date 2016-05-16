@@ -10,4 +10,5 @@ public interface WorkerGraphicalManager {
     void setProgress(int progress);
     void setDetailedProgressMessage(String message);
     void showMessageDialog(Object message, String title, int messageType);
+    void showResultDialog(String message, String title, String result);
 }

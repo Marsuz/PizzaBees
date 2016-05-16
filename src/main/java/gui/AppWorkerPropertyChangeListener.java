@@ -1,5 +1,7 @@
 package gui;
 
+import com.google.gson.GsonBuilder;
+
 import javax.swing.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -56,10 +58,10 @@ public class AppWorkerPropertyChangeListener implements PropertyChangeListener {
         switch (state) {
             case DONE:
                 try {
-                    manager.showMessageDialog(
-                            "Finished running solver. Calculated solution:\n" + worker.get(),
-                            "Solving finished",
-                            JOptionPane.INFORMATION_MESSAGE);
+                    manager.showResultDialog(
+                            "Best solution calculated.",
+                            "Success",
+                            new GsonBuilder().setPrettyPrinting().create().toJson(worker.get()));
                 } catch (InterruptedException | CancellationException e) {
                     manager.showMessageDialog(
                             "The solving process has been cancelled.",
