@@ -214,4 +214,25 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     public void showMessageDialog(Object message, String title, int messageType) {
         JOptionPane.showMessageDialog(this, message, title, messageType);
     }
+
+    /**
+     * Shows result dialog to the user with specified title, message and result.
+     *
+     * @param message Message shown in the dialog.
+     * @param title Title of the dialog.
+     * @param result Result shown in text area of the dialog.
+     * @see ResultDialog
+     * @see WorkerGraphicalManager
+     */
+    public void showResultDialog(String message, String title, String result) {
+        SwingUtilities.invokeLater(() -> {
+            ResultDialog dialog = new ResultDialog(
+                    title,
+                    message,
+                    result
+            );
+            dialog.pack();
+            dialog.setVisible(true);
+        });
+    }
 }
