@@ -69,8 +69,8 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     }
 
     private void updateWagesLabel() {
-        int distanceValue = wagesSlider.getValue();
-        int timeValue = wagesSlider.getMaximum() - wagesSlider.getValue();
+        int distanceValue = wagesSlider.getMaximum() - wagesSlider.getValue();
+        int timeValue = wagesSlider.getValue();
         double distanceWage = (double)distanceValue / Math.max(distanceValue, timeValue);
         double timeWage = (double)timeValue / Math.max(distanceValue, timeValue);
         solverParameters.setDistanceWage(distanceWage);
