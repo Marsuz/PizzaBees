@@ -34,6 +34,15 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     private JComboBox comboBox1;
     private JComboBox comboBox2;
     private JLabel progressLabel;
+    private JSlider wagesSlider;
+    private JTextField scoutsTextField;
+    private JLabel wagesLabel;
+    private JTextField eliteQuantityTextField;
+    private JTextField normalQuantityTextField;
+    private JTextField selectedSitesTextField;
+    private JTextField bestSitesTextField;
+    private JTextField iterationsTextField;
+    private JTextField movesTextField;
 
     private JFileChooser fileChooser = new JFileChooser();
 
