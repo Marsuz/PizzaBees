@@ -9,6 +9,8 @@ import solver.setting.SettingFactory;
 import solver.setting.random.RandomSettingFactory;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -18,6 +20,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 
@@ -44,6 +47,7 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
 
     private JFileChooser fileChooser = new JFileChooser();
 
+    private SolverParameters solverParameters;
     private SwingWorker appWorker = null;
 
     /**
@@ -51,6 +55,9 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     Dashboard() {
         super("PizzaBees");
+        solverParameters = new SolverParameters();
+        wagesSlider.addChangeListener(e -> updateWagesLabel());
+        updateWagesLabel();
         fileChooser.setFileFilter(new FileNameExtensionFilter("JSON input file", "json"));
         chooseFileButton.addActionListener(e -> chooseFileOfInput());
         runButton.addActionListener(e -> runButtonClicked());
@@ -59,6 +66,16 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
         setMaximumSize(new Dimension(800, 600));
         setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    private void updateWagesLabel() {
+        int distanceValue = wagesSlider.getValue();
+        int timeValue = wagesSlider.getMaximum() - wagesSlider.getValue();
+        double distanceWage = (double)distanceValue / Math.max(distanceValue, timeValue);
+        double timeWage = (double)timeValue / Math.max(distanceValue, timeValue);
+        solverParameters.setDistanceWage(distanceWage);
+        solverParameters.setTimeWage(timeWage);
+        wagesLabel.setText(String.format(Locale.forLanguageTag("pl_PL"), "%.2f:%.2f", distanceWage, timeWage));
     }
 
     /**
@@ -93,16 +110,13 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
         SavedState state = AppInput.stringToState(this.inputTextArea.getText());
         SettingFactory settingFactory = new RandomSettingFactory(state.getRestaurants(), state.getOrders());
 
-        SolverParameters solverParameters = new SolverParameters();
-        solverParameters.setDistanceWage(1);
-        solverParameters.setScouts(100);
-        solverParameters.setTimeWage(1d);
-        solverParameters.setSelectedSites(10);
-        solverParameters.setBestSites(5);
-        solverParameters.setEliteQuantity(8);
-        solverParameters.setNormalQuantity(3);
-        solverParameters.setIterations(25);
-        solverParameters.setMoves(5);
+        solverParameters.setScouts(Integer.parseInt(scoutsTextField.getText()));
+        solverParameters.setSelectedSites(Integer.parseInt(selectedSitesTextField.getText()));
+        solverParameters.setBestSites(Integer.parseInt(bestSitesTextField.getText()));
+        solverParameters.setEliteQuantity(Integer.parseInt(eliteQuantityTextField.getText()));
+        solverParameters.setNormalQuantity(Integer.parseInt(normalQuantityTextField.getText()));
+        solverParameters.setIterations(Integer.parseInt(iterationsTextField.getText()));
+        solverParameters.setMoves(Integer.parseInt(movesTextField.getText()));
 
         SolverWorker worker = new SolverWorker(this, settingFactory, solverParameters);
         worker.addPropertyChangeListener(new AppWorkerPropertyChangeListener(this, worker));
