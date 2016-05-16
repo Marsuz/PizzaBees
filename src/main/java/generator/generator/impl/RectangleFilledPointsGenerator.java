@@ -38,10 +38,10 @@ public class RectangleFilledPointsGenerator implements Generator {
         List<Order> orders = new ArrayList<>();
         for (int i = 0; i < restaurantsNumber; i++) {
             for (int j = 1; j <= numberOfLines; j++) {
-                Order order1 = new Order(step * (i + 1), 10 * j + step / stepDivideFactor, maxOrderQuantity);
-                Order order2 = new Order(step * (i + 1), 10 * j - step / stepDivideFactor, maxOrderQuantity);
-                Order order3 = new Order(step * (i + 1) + step / stepDivideFactor, 10 * j, maxOrderQuantity);
-                Order order4 = new Order(step * (i + 1) - step / stepDivideFactor, 10 * j, maxOrderQuantity);
+                Order order1 = new Order(step * (i + 1), step * j + step / stepDivideFactor, maxOrderQuantity);
+                Order order2 = new Order(step * (i + 1), step * j - step / stepDivideFactor, maxOrderQuantity);
+                Order order3 = new Order(step * (i + 1) + step / stepDivideFactor, step * j, maxOrderQuantity);
+                Order order4 = new Order(step * (i + 1) - step / stepDivideFactor, step * j, maxOrderQuantity);
                 orders.add(order1);
                 orders.add(order2);
                 orders.add(order3);
