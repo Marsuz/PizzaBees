@@ -31,8 +31,6 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     private JButton chooseFileButton;
     private JButton runButton;
     private JProgressBar progressBar;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
     private JLabel progressLabel;
     private JSlider wagesSlider;
     private JTextField scoutsTextField;
@@ -141,8 +139,6 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
     public void prepareInterfaceForWorker(boolean running) {
         boolean controlsEnabled = !running;
 
-        comboBox1.setEnabled(controlsEnabled);
-        comboBox2.setEnabled(controlsEnabled);
         inputTextArea.setEnabled(controlsEnabled);
         fileTextField.setEnabled(controlsEnabled);
         chooseFileButton.setEnabled(controlsEnabled);
