@@ -64,9 +64,10 @@ public class RandomSetting extends Setting {
      * swap inside one delivery
      */
     void swapInDelivery() throws FailedShuffleException {
-
         Restaurant r = restaurants.get(random.nextInt(restaurants.size()));
         List<Delivery> deliveries = r.getDeliveries();
+
+        if(deliveries.size() == 0) throw new FailedShuffleException();
         Delivery d = deliveries.get(random.nextInt(deliveries.size()));
         shuffler.swap(d);
     }

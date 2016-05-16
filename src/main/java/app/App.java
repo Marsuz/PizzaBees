@@ -2,6 +2,7 @@ package app;
 
 import app.savedSate.SavedState;
 import com.google.common.base.Preconditions;
+import model.Courier;
 import model.Order;
 import model.Restaurant;
 import model.Setting;
@@ -31,25 +32,16 @@ public class App {
 
         ClassLoader classLoader = App.class.getClassLoader();
 
-        final String resourceName = "inputSample.json";
+        final String resourceName = "RestaurantsInRectangle1.json";
         final URL resource = classLoader.getResource(resourceName);
         Preconditions.checkNotNull(resource, String.format("Resource with name %s not available", resourceName));
 
         AppInput appInput = new AppInput(resource.getPath());
         SavedState savedState = appInput.getSavedState();
-        Restaurant.P = 10;
-        int restaurantsNumber = 2;
-        int ordersNumber = 10;
-        int couriersNumber = 5;
-        List<Restaurant> restaurants = new ArrayList<>();
-        List<Order> orders = new ArrayList<>();
-
-        for(int i = 0; i < restaurantsNumber; i++)
-            restaurants.add(i, new Restaurant(i, i, couriersNumber));
-
-        for(int i = 0; i < ordersNumber; i++)
-            orders.add(i, new Order(i, i , i));
-
+        Restaurant.P = savedState.getP();
+        Courier.velocity = savedState.getV();
+        List<Restaurant> restaurants = savedState.getRestaurants();
+        List<Order> orders = savedState.getOrders();
 
         logger.info("Restaurants: " +restaurants);
         logger.info("Orders: " + orders);
@@ -66,7 +58,7 @@ public class App {
         solverParameters.setBestSites(5);
         solverParameters.setEliteQuantity(8);
         solverParameters.setNormalQuantity(3);
-        solverParameters.setIterations(25);
+        solverParameters.setIterations(200);
         solverParameters.setMoves(5);
 
         Setting result = solver.solve(settingFactory, solverParameters);
