@@ -108,6 +108,11 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     private SwingWorker initializeAppWorker() throws IOException {
         SavedState state = AppInput.stringToState(this.inputTextArea.getText());
+
+        if (state == null) {
+            throw new IOException("Could not deserialize state.");
+        }
+
         SettingFactory settingFactory = new RandomSettingFactory(state.getRestaurants(), state.getOrders());
 
         solverParameters.setScouts(Integer.parseInt(scoutsTextField.getText()));
@@ -129,13 +134,24 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      * @see AppWorker
      */
     private void runButtonClicked() {
-        if (appWorker == null) {
-            prepareInterfaceForWorker(true);
+        if (appWorker == null || appWorker.isCancelled() || appWorker.isDone()) {
             try {
                 appWorker = initializeAppWorker();
                 appWorker.execute();
-            } catch (IOException e) {
+            } catch (com.google.gson.JsonSyntaxException e) {
                 e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error in JSON syntax", JOptionPane.ERROR_MESSAGE);
+            } catch (com.google.gson.JsonParseException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error in JSON parsing", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Could not parse one of the parameters as integer.", "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                prepareInterfaceForWorker(appWorker != null && !appWorker.isDone() && !appWorker.isCancelled());
             }
         } else {
             appWorker.cancel(true);
