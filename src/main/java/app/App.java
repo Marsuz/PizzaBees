@@ -58,7 +58,7 @@ public class App {
         solverParameters.setBestSites(5);
         solverParameters.setEliteQuantity(8);
         solverParameters.setNormalQuantity(3);
-        solverParameters.setIterations(200);
+        solverParameters.setIterations(1000);
         solverParameters.setMoves(5);
 
         Setting result = solver.solve(settingFactory, solverParameters);

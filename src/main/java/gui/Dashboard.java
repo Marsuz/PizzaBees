@@ -2,6 +2,8 @@ package gui;
 
 import app.AppInput;
 import app.savedSate.SavedState;
+import model.Courier;
+import model.Restaurant;
 import model.Setting;
 import org.apache.log4j.Logger;
 import solver.SolverParameters;
@@ -108,6 +110,8 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
      */
     private SwingWorker initializeAppWorker() throws IOException {
         SavedState state = AppInput.stringToState(this.inputTextArea.getText());
+        Restaurant.P = state.getP();
+        Courier.velocity = state.getV();
 
         if (state == null) {
             throw new IOException("Could not deserialize state.");
