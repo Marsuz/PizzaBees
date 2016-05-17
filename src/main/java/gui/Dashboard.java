@@ -63,7 +63,6 @@ public class Dashboard extends JFrame implements WorkerGraphicalManager {
         runButton.addActionListener(e -> runButtonClicked());
         setContentPane(rootPanel);
         setMinimumSize(new Dimension(800, 600));
-        setMaximumSize(new Dimension(800, 600));
         setSize(800, 600);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
