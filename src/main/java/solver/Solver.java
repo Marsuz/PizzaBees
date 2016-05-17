@@ -45,7 +45,7 @@ public class Solver {
                 )
         );
 
-        System.out.println(iterationSettings.get(iterationSettings.size() - 1).getFitness(distanceWage, timeWage));
+        System.out.println(iterationSettings.get(0).getFitness(distanceWage, timeWage));
 
         int bestSites = solverParameters.getBestSites();
         int eliteQuantity = solverParameters.getEliteQuantity();
