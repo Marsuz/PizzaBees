@@ -44,7 +44,7 @@ public class SolverWorker extends SwingWorker<Setting, Integer> {
      */
     @Override
     protected Setting doInBackground() throws Exception {
-        for(int i = 1; i <= solverParameters.getIterations(); i++) {
+        for(int i = 1; (i <= solverParameters.getIterations() && !isCancelled()); i++) {
             settings = solver.solveIteration(settings, factory, solverParameters);
             publish(i);
             setProgress(progressForIteration(i));
