@@ -28,12 +28,12 @@ public class App {
             System.exit(1);
         }
         //String outputPath = args[0];
-        String outputPath = "./outputRestaurantsInRectangle1.json";
+        String outputPath = "./outputRestaurantsInLine2.json";
 
 
         ClassLoader classLoader = App.class.getClassLoader();
 
-        final String resourceName = "RestaurantsInRectangle1.json";
+        final String resourceName = "RestaurantsInLine2.json";
         final URL resource = classLoader.getResource(resourceName);
         Preconditions.checkNotNull(resource, String.format("Resource with name %s not available", resourceName));
 

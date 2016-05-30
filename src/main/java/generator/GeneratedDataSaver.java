@@ -64,9 +64,9 @@ public class GeneratedDataSaver {
         GeneratedDataSaver saver = new GeneratedDataSaver();
         /*saver.generateAndSaveData("src\\test\\resources\\generated\\RestaurantsInLine1.json", 0, new int[]{4, 1, 4, 5, 10, 1, 3, 3});
         saver.generateAndSaveData("src\\test\\resources\\generated\\RestaurantsInSquare1.json", 0, new int[]{5, 4, 1, 3, 10, 3});
-        saver.generateAndSaveData("src\\test\\resources\\generated\\RestaurantsInRectangle1.json", 0, new int[]{3, 3, 1, 5, 10, 2, 5, 2});
-        saver.generateAndSaveData("src\\test\\resources\\generated\\RestaurantsInLine2.json", 0, new int[]{20, 1, 2, 5, 20, 1, 1, 3});*/
-        saver.generateAndSaveData("src\\main\\resources\\RandomRestaurants.json", 1, new int[]{100, 1000, 1, 20, 5, 10, 1, 1} );
+        saver.generateAndSaveData("src\\test\\resources\\generated\\RestaurantsInRectangle1.json", 0, new int[]{3, 3, 1, 5, 10, 2, 5, 2});*/
+        saver.generateAndSaveData("src\\main\\resources\\RestaurantsInLine2.json", 0, new int[]{20, 1, 2, 5, 20, 1, 1, 3});
+        //saver.generateAndSaveData("src\\main\\resources\\RandomRestaurants.json", 1, new int[]{100, 1000, 1, 20, 5, 10, 1, 1} );
     }
 
 }

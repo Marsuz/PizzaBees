@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  */
 public class Solver {
 
-    private static final String DEFAULT_OUTPUT_PATH = "./RestaurantsInRectangle1Results.csv";
+    private static final String DEFAULT_OUTPUT_PATH = "./RestaurantsInLine2Results.csv";
 //    List<Restaurant> beginRestaurants;
 //    List<Order> beginOrders;
 
