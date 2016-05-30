@@ -1,0 +1,224 @@
+{
+  "random": {
+    "seed": 79322563705671,
+    "nextNextGaussian": 0.0,
+    "haveNextNextGaussian": false
+  },
+  "shuffler": {
+    "random": {
+      "seed": 68148128865815,
+      "nextNextGaussian": 0.0,
+      "haveNextNextGaussian": false
+    }
+  },
+  "restaurants": [
+    {
+      "courierNumber": 4,
+      "couriers": [
+        {
+          "time": 58
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        }
+      ],
+      "deliveries": [
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 7,
+                "y": 10
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 10,
+                "y": 7
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 10,
+                "y": 13
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 13,
+                "y": 10
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 17,
+                "y": 10
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 20,
+                "y": 7
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 20,
+                "y": 13
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 23,
+                "y": 10
+              },
+              "quantity": 5
+            }
+          ]
+        }
+      ],
+      "x": 10,
+      "y": 10
+    },
+    {
+      "courierNumber": 4,
+      "couriers": [
+        {
+          "time": 58
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        }
+      ],
+      "deliveries": [
+        {
+          "orders": [
+            {
+              "destination": {
+                "x": 7,
+                "y": 20
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 10,
+                "y": 17
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 10,
+                "y": 23
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 13,
+                "y": 20
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 17,
+                "y": 20
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 20,
+                "y": 17
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 20,
+                "y": 23
+              },
+              "quantity": 5
+            },
+            {
+              "destination": {
+                "x": 23,
+                "y": 20
+              },
+              "quantity": 5
+            }
+          ]
+        }
+      ],
+      "x": 10,
+      "y": 20
+    },
+    {
+      "courierNumber": 4,
+      "couriers": [
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        }
+      ],
+      "deliveries": [
+        {
+          "orders": []
+        }
+      ],
+      "x": 20,
+      "y": 10
+    },
+    {
+      "courierNumber": 4,
+      "couriers": [
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        },
+        {
+          "time": 0
+        }
+      ],
+      "deliveries": [],
+      "x": 20,
+      "y": 20
+    }
+  ],
+  "fullDistance": 112,
+  "maxTime": 58
+}
