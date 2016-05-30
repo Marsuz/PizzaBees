@@ -3,6 +3,10 @@ package solver;
 import model.Setting;
 import solver.setting.SettingFactory;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +16,8 @@ import java.util.stream.IntStream;
  * Created by Marcin on 2016-04-19.
  */
 public class Solver {
+
+    private static final String DEFAULT_OUTPUT_PATH = "./iterationsResults.csv";
 //    List<Restaurant> beginRestaurants;
 //    List<Order> beginOrders;
 
@@ -113,6 +119,21 @@ public class Solver {
             iterationSettings = solveIteration(iterationSettings, factory, solverParameters);
         }
 
+        saveResults(iterationSettings, solverParameters);
         return bestSetting(iterationSettings, solverParameters);
     }
+
+    private void saveResults(List<Setting> settings, SolverParameters solverParameters) {
+        try (PrintWriter pr = new PrintWriter(new FileWriter(DEFAULT_OUTPUT_PATH))) {
+            int x = 0;
+            for (Setting setting : settings) {
+                pr.write(x + "," + setting.getFitness(solverParameters.getDistanceWage(), solverParameters.getTimeWage()) + "\n");
+                x++;
+            }
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
 }
