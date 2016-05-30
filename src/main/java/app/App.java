@@ -28,12 +28,12 @@ public class App {
             System.exit(1);
         }
         //String outputPath = args[0];
-        String outputPath = "./outputRestaurantsInSquare1.json";
+        String outputPath = "./outputRestaurantsInRectangle1.json";
 
 
         ClassLoader classLoader = App.class.getClassLoader();
 
-        final String resourceName = "RestaurantsInSquare1.json";
+        final String resourceName = "RestaurantsInRectangle1.json";
         final URL resource = classLoader.getResource(resourceName);
         Preconditions.checkNotNull(resource, String.format("Resource with name %s not available", resourceName));
 
@@ -53,12 +53,12 @@ public class App {
         //FIXME builder pattern maybe?
         SolverParameters solverParameters = new SolverParameters();
         solverParameters.setDistanceWage(1);
-        solverParameters.setScouts(400);
+        solverParameters.setScouts(21);
         solverParameters.setTimeWage(1d);
-        solverParameters.setSelectedSites(50);
-        solverParameters.setBestSites(10);
-        solverParameters.setEliteQuantity(8);
-        solverParameters.setNormalQuantity(5);
+        solverParameters.setSelectedSites(6);
+        solverParameters.setBestSites(2);
+        solverParameters.setEliteQuantity(2);
+        solverParameters.setNormalQuantity(4);
         solverParameters.setIterations(1000);
         solverParameters.setMoves(2);
 

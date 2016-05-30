@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  */
 public class Solver {
 
-    private static final String DEFAULT_OUTPUT_PATH = "./RestaurantsInSquare1Results.csv";
+    private static final String DEFAULT_OUTPUT_PATH = "./RestaurantsInRectangle1Results.csv";
 //    List<Restaurant> beginRestaurants;
 //    List<Order> beginOrders;
 
@@ -114,12 +114,14 @@ public class Solver {
 
 	public Setting solve(SettingFactory factory, SolverParameters solverParameters) {
         List<Setting> iterationSettings = initialSettings(factory, solverParameters);
+        List<Setting> iterations = new ArrayList<>();
 
         for(int i = 0; i < solverParameters.getIterations(); i++) { // TODO: second stop condition
             iterationSettings = solveIteration(iterationSettings, factory, solverParameters);
+            iterations.add(bestSetting(iterationSettings, solverParameters));
         }
 
-        saveResults(iterationSettings, solverParameters);
+        saveResults(iterations, solverParameters);
         return bestSetting(iterationSettings, solverParameters);
     }
 
