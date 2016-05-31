@@ -126,15 +126,15 @@ public class Solver {
     }
 
     private void saveResults(List<Setting> settings, SolverParameters solverParameters) {
-        try (PrintWriter pr = new PrintWriter(new FileWriter(DEFAULT_OUTPUT_PATH))) {
-            int x = 0;
-            for (Setting setting : settings) {
-                pr.write(x + "," + setting.getFitness(solverParameters.getDistanceWage(), solverParameters.getTimeWage()) + "\n");
-                x++;
-            }
-        } catch(IOException ex) {
-            ex.printStackTrace();
-        }
+//        try (PrintWriter pr = new PrintWriter(new FileWriter(DEFAULT_OUTPUT_PATH))) {
+//            int x = 0;
+//            for (Setting setting : settings) {
+//                pr.write(x + "," + setting.getFitness(solverParameters.getDistanceWage(), solverParameters.getTimeWage()) + "\n");
+//                x++;
+//            }
+//        } catch(IOException ex) {
+//            ex.printStackTrace();
+//        }
     }
 
 
